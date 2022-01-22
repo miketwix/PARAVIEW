@@ -10,8 +10,7 @@
 # -------------------------------------------------------------------------------------------------------------------- #
 
 # Import the needed libraries to work in the environment
-# Paraview library to operate program from python console
-#import paraview.simple as pvs
+
 # Library to operate within the operating system of the user
 import os
 from pathlib import Path
@@ -27,6 +26,8 @@ import Utilities.Analysis as Analyze
 # Make the setup info "readable" for other functions
 global setup_info
 
+print (setup_info["FolderInfo"]["inFolder"])
+start_time = time.time()
 # TODO Buscar forma de ejecutar códigos desde otras carpetas
 if setup_info["RunType"] == 1:
     Analyze.single(setup_info)
@@ -36,3 +37,6 @@ elif setup_info["RunType"] == 3:
     Analyze.figOnly(setup_info)
 else:
     print("Please select a valid RunType at the Setup file")
+
+print("The process finished successfully.")
+print("Execution time: %s seconds" % (time.time() - start_time))

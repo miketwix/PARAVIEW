@@ -18,5 +18,5 @@ input_path = "/home/administrador/Escritorio/Paraview_Batch_Postproc/Case_Files"
 output_path ="/home/administrador/Escritorio/Paraview_Batch_Postproc/Output"
 font_path   ="/home/administrador/Escritorio/Paraview_Batch_Postproc"
 # ---------------------------------------------------------------------------------------------------------
-setup_info = {"inFolder": input_path, "outFolder": output_path, "RunType": runType, "fontFolder": font_path}
+setup_info = {"FolderInfo": {"inFolder": input_path, "outFolder": output_path, "fontFolder": font_path}, "RunType": runType}
 
