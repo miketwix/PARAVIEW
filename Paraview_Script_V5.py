@@ -22,6 +22,10 @@ import time
 import numpy as np
 # Import data from the setup file
 from Utilities.Setup import setup_info
+
+# Make the setup info "readable" for other functions
+global setup_info
+
 # TODO Buscar forma de ejecutar códigos desde otras carpetas
 if setup_info["RunType"] == 1:
     execfile('Single.py')
