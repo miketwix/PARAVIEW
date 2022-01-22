@@ -12,7 +12,7 @@
 # --------------------------------------------- RUN TYPE --------------------------------------
 # Select the type of Run that will be performed. Use [1] for single simulation analysis. Use [2] for a comparison
 # analysis and [3] for a figure only  run.
-runType = 1
+runType = 4
 # --------------------------------------------- FOLDER CONFIGURATION --------------------------------------
 input_path = "/home/administrador/Escritorio/Paraview_Batch_Postproc/Case_Files"
 output_path ="/home/administrador/Escritorio/Paraview_Batch_Postproc/Output"

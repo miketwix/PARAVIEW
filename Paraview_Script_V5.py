@@ -11,9 +11,10 @@
 
 # Import the needed libraries to work in the environment
 # Paraview library to operate program from python console
-import paraview.simple as pvs
+#import paraview.simple as pvs
 # Library to operate within the operating system of the user
 import os
+from pathlib import Path
 # Library to use global variables
 import glob
 # Library to compute the time taken to run program
@@ -22,16 +23,16 @@ import time
 import numpy as np
 # Import data from the setup file
 from Utilities.Setup import setup_info
-
+import Utilities.Analysis as Analyze
 # Make the setup info "readable" for other functions
 global setup_info
 
 # TODO Buscar forma de ejecutar códigos desde otras carpetas
 if setup_info["RunType"] == 1:
-    execfile('Single.py')
+    Analyze.single(setup_info)
 elif setup_info["RunType"] == 2:
-    execfile('Comp.py')
+    Analyze.comparison(setup_info)
 elif setup_info["RunType"] == 3:
-    execfile('FigOnly.py')
+    Analyze.figOnly(setup_info)
 else:
     print("Please select a valid RunType at the Setup file")
