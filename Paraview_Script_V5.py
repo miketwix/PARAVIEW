@@ -22,11 +22,11 @@ import time
 import numpy as np
 # Import data from the setup file
 from Utilities.Setup import setup_info
+import Utilities.supportFunctions as Support
 import Utilities.Analysis as Analyze
 # Make the setup info "readable" for other functions
 global setup_info
 
-print (setup_info["FolderInfo"]["inFolder"])
 start_time = time.time()
 # TODO Buscar forma de ejecutar códigos desde otras carpetas
 if setup_info["RunType"] == 1:
