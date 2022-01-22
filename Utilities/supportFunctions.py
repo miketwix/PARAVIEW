@@ -1,9 +1,20 @@
 import pathlib
 import glob
+import os
+
+def create_output_folder(out_path,name):
+    path = str(out_path) + "/" + name
+    try:
+        os.makedirs(path)
+        #path.append(path)
+    except OSError:
+        print("Creation of the directory %s failed" % path)
+    else:
+        print("Successfully created the directory %s" % name)
+
+    return path
 
 
-def hola():
-    printf('Hola')
 def simlist(input_path):
     # function searches all sim files in inp folder
     print("Searching for case.foam files...")
