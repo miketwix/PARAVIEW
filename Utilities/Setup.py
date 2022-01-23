@@ -9,16 +9,24 @@
 #   Desired for the different mode of use of the postprocessing run and simulation variables
 # -------------------------------------------------------------------------------------------------------------------- #
 
-# --------------------------------------------- RUN TYPE --------------------------------------
+# ---------------------------------------------  RUN TYPE --------------------------------------
 # Select the type of Run that will be performed. Use [1] for single simulation analysis. Use [2] for a comparison
 # analysis and [3] for a figure only  run.
 runType = 1
 # --------------------------------------------- FOLDER CONFIGURATION --------------------------------------
 input_path = "/home/administrador/Escritorio/Paraview_Batch_Postproc/Case_Files"
-output_path ="/home/administrador/Escritorio/Paraview_Batch_Postproc/Output"
-font_path   ="/home/administrador/Escritorio/Paraview_Batch_Postproc"
-# --------------------------------------------IMAGE RESOLUTION--------------------------------------------
+output_path = "/home/administrador/Escritorio/Paraview_Batch_Postproc/Output"
+font_path = "/home/administrador/Escritorio/Paraview_Batch_Postproc"
+
+# --------------------------------------------  IMAGE RESOLUTION--------------------------------------------
 image_size = [2048, 1080]  # 2K size
 
-setup_info = {"FolderInfo": {"inFolder": input_path, "outFolder": output_path, "fontFolder": font_path}, "RunType": runType, "ImageRes": image_size}
+# --------------------------------------------  SIMULATION PARAMETERS --------------------------------------
+# Density of the air
+rho_air = 1.1965
+# Velocity of the free stream
+fs_velocity = 15
 
+setup_info = {"FolderInfo": {"inFolder": input_path, "outFolder": output_path, "fontFolder": font_path},
+              "RunType": runType, "ImageRes": image_size,
+              "SimParam": {"Speed":fs_velocity,"Density": rho_air}}
