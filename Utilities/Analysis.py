@@ -1,7 +1,7 @@
 from Utilities.supportFunctions import select_sim, create_output_folder
-import paraview.simple as pvs
-import pathlib
+from paraview.simple import *
 from Utilities.viewsDict import car_views
+import glob
 
 
 def single(info):
@@ -32,21 +32,44 @@ def single(info):
     image_size = info["ImageRes"]
     block_names = ["Block - Fluid", "CAR"]  # "Block - Fluid", "Block - CAR"
     car_views_dictionary, stl_views_dictionary, slice_views_dictionary = car_views()
-    font_path = Path(info["FolderInfo"]["fontFolder"])
+    font_path = info["FolderInfo"]["fontFolder"]
     ########################################################################################################
     #                                                   INITIALIZATION                                    #
     ########################################################################################################
 
     # Create the render view
-    renderView1 = pvs.GetActiveViewOrCreate('RenderView')
+    renderView1 = GetActiveViewOrCreate('RenderView')
 
     # Import the part STL and extract variables needed
-    part_stl = pvs.STLReader(FileNames=[Path(simulation["partPath"])])
-    part_stl_display = pvs.Hide(part_stl, renderView1, 'GeometryRepresentation')
+    print(simulation["partPath"])
+    part_stl = STLReader(registrationName='Part.stl', FileNames=[simulation["partPath"]])
+    part_stl_display = Show(part_stl, renderView1, 'GeometryRepresentation')
 
-    # Import the CAR STL and extract variables needed
-    car_stl = pvs.STLReader(FileNames=[Path(simulation["carPath"])])
-    car_stl_display = pvs.Hide(car_stl, renderView1, 'GeometryRepresentation')
+    # get color transfer function/color map for 'STLSolidLabeling'
+    sTLSolidLabelingLUT = GetColorTransferFunction('STLSolidLabeling')
+
+    # trace defaults for the display properties.
+    part_stl_display.Representation = 'Surface'
+    part_stl_display.ColorArrayName = ['CELLS', 'STLSolidLabeling']
+    part_stl_display.LookupTable = sTLSolidLabelingLUT
+    part_stl_display.SelectTCoordArray = 'None'
+    part_stl_display.SelectNormalArray = 'None'
+    part_stl_display.SelectTangentArray = 'None'
+    part_stl_display.OSPRayScaleFunction = 'PiecewiseFunction'
+    part_stl_display.SelectOrientationVectors = 'None'
+    part_stl_display.ScaleFactor = 0.2695983052253723
+    part_stl_display.SelectScaleArray = 'STLSolidLabeling'
+    part_stl_display.GlyphType = 'Arrow'
+    part_stl_display.GlyphTableIndexArray = 'STLSolidLabeling'
+    part_stl_display.GaussianRadius = 0.013479915261268616
+    part_stl_display.SetScaleArray = [None, '']
+    part_stl_display.ScaleTransferFunction = 'PiecewiseFunction'
+    part_stl_display.OpacityArray = [None, '']
+    part_stl_display.OpacityTransferFunction = 'PiecewiseFunction'
+    part_stl_display.DataAxesGrid = 'GridAxesRepresentation'
+    part_stl_display.PolarAxes = 'PolarAxesRepresentation'
+
+    print("Hello from a function")
 
 
 def comparison(info):
