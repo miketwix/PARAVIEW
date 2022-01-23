@@ -32,5 +32,5 @@ car_photos = False  # Set this to false if you don't want to get photos of the C
 
 setup_info = {"FolderInfo": {"inFolder": input_path, "outFolder": output_path, "fontFolder": font_path},
               "RunType": runType, "ImageRes": image_size,
-              "SimParam": {"Speed": fs_velocity, "Density": rho_air}
+              "SimParam": {"Speed": fs_velocity, "Density": rho_air},
               "Output": {"CAR": car_photos, "PART": part_photos}}
