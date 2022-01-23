@@ -2,6 +2,7 @@ import pathlib
 import glob
 import os
 
+
 def create_output_folder(out_path,name):
     path = str(out_path) + "/" + name
     try:
@@ -42,7 +43,5 @@ def select_sim(info):
             print('please select a valid ID')
         else:
             valid_sel = 1
-
-    # TODO Create folder,with name and dictionary with information
     selected_sim = simInFolder[selected_sim_ID]
     return selected_sim

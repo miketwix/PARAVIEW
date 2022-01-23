@@ -14,7 +14,7 @@
 # Library to operate within the operating system of the user
 import os
 from pathlib import Path
-# Library to use global variables
+# Library to use as finder
 import glob
 # Library to compute the time taken to run program
 import time
@@ -24,10 +24,12 @@ import numpy as np
 from Utilities.Setup import setup_info
 import Utilities.supportFunctions as Support
 import Utilities.Analysis as Analyze
-# Make the setup info "readable" for other functions
-global setup_info
 
 start_time = time.time()
+# Clean everything in output folder
+files = os.listdir(setup_info["FolderInfo"]["outFolder"])
+for f in files:
+    os. rmdir (setup_info["FolderInfo"]["outFolder"]+"/" + f)
 # TODO Buscar forma de ejecutar códigos desde otras carpetas
 if setup_info["RunType"] == 1:
     Analyze.single(setup_info)
