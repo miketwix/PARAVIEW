@@ -18,8 +18,6 @@ from pathlib import Path
 import glob
 # Library to compute the time taken to run program
 import time
-# Library to do mathematical operations on python
-import numpy as np
 # Import data from the setup file
 from Utilities.Setup import setup_info
 import Utilities.supportFunctions as Support
@@ -29,7 +27,8 @@ start_time = time.time()
 # Clean everything in output folder
 files = os.listdir(setup_info["FolderInfo"]["outFolder"])
 for f in files:
-    os. rmdir (setup_info["FolderInfo"]["outFolder"]+"/" + f)
+    os. rmdir(setup_info["FolderInfo"]["outFolder"]+"/" + f)
+
 # TODO Buscar forma de ejecutar códigos desde otras carpetas
 if setup_info["RunType"] == 1:
     Analyze.single(setup_info)
