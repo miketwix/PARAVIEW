@@ -17,6 +17,8 @@ runType = 1
 input_path = "/home/administrador/Escritorio/Paraview_Batch_Postproc/Case_Files"
 output_path ="/home/administrador/Escritorio/Paraview_Batch_Postproc/Output"
 font_path   ="/home/administrador/Escritorio/Paraview_Batch_Postproc"
-# ---------------------------------------------------------------------------------------------------------
-setup_info = {"FolderInfo": {"inFolder": input_path, "outFolder": output_path, "fontFolder": font_path}, "RunType": runType}
+# --------------------------------------------IMAGE RESOLUTION--------------------------------------------
+image_size = [2048, 1080]  # 2K size
+
+setup_info = {"FolderInfo": {"inFolder": input_path, "outFolder": output_path, "fontFolder": font_path}, "RunType": runType, "ImageRes": image_size}
 
