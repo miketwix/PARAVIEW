@@ -26,7 +26,11 @@ image_size = [2048, 1080]  # 2K size
 rho_air = 1.1965
 # Velocity of the free stream
 fs_velocity = 15
+# -------------------------------------------- DESIRED OUTPUT ----------------------------------------------
+part_photos = False  # Set this to false if you don't want to get photos of the part stl
+car_photos = False  # Set this to false if you don't want to get photos of the CAR stl
 
 setup_info = {"FolderInfo": {"inFolder": input_path, "outFolder": output_path, "fontFolder": font_path},
               "RunType": runType, "ImageRes": image_size,
-              "SimParam": {"Speed":fs_velocity,"Density": rho_air}}
+              "SimParam": {"Speed": fs_velocity, "Density": rho_air}
+              "Output": {"CAR": car_photos, "PART": part_photos}}
