@@ -28,7 +28,7 @@ current_loc = "/home/administrador/PycharmProjects/Postprocessing"
 utilities_loc = (str(current_loc) + "/Utilities")
 sys.path.append(utilities_loc)
 
-import Analysis.py
+import Analysis as Analyze
 
 ########################################################################################################################
 # ------------------------------------------------- CONFIG DATA IMPORT-------- ----------------------------------------#
