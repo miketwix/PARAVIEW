@@ -12,10 +12,9 @@
 ########################################################################################################################
 # ------------------------------------------------- IMPORT OF LIBRARIES NEEDED ----------------------------------------#
 ########################################################################################################################
-# Import the needed libraries to work in the environment
-from paraview.simple import *
 # Library to operate within the operating system of the user
 import os
+import sys
 # Library to navigate within the operating system of the user
 from pathlib import Path
 # Library to use as finder
@@ -24,6 +23,13 @@ import glob
 import time
 # Library to use .json files
 import json
+
+current_loc = "/home/administrador/PycharmProjects/Postprocessing"
+utilities_loc = (str(current_loc) + "/Utilities")
+sys.path.append(utilities_loc)
+
+import Analysis.py
+
 ########################################################################################################################
 # ------------------------------------------------- CONFIG DATA IMPORT-------- ----------------------------------------#
 ########################################################################################################################
@@ -44,7 +50,7 @@ start_time = time.time()
 # Clean everything in output folder
 files = os.listdir(setup_info["FolderInfo"]["outFolder"])
 for f in files:
-    os. rmdir(setup_info["FolderInfo"]["outFolder"]+"/" + f)
+    os.rmdir(setup_info["FolderInfo"]["outFolder"] + "/" + f)
 ########################################################################################################################
 # ------------------------------------------------- Postproc run type branch selection --------------------------------#
 ########################################################################################################################
