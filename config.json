@@ -1,4 +1,4 @@
-{"FolderInfo": {"inFolder": "/home/administrador/Escritorio/Paraview_Batch_Postproc/Case_Files", "outFolder": "/home/administrador/Escritorio/Paraview_Batch_Postproc/Output", "fontFolder": "/home/administrador/Escritorio/Paraview_Batch_Postproc"},
+{"FolderInfo": {"inFolder": "C:\\Users\\Gabi\\Desktop\\Paraview_Batch_Postproc\\Case_Files", "outFolder": "C:\\Users\\Gabi\\Desktop\\Paraview_Batch_Postproc\\Output", "fontFolder": "C:\\Users\\Gabi\\Desktop\\Paraview_Batch_Postproc"},
               "RunType": 1, "ImageRes": [2048, 1080] ,
               "SimParam": {"Speed": 15, "Density": 1.1965},
               "Output": {"CAR": false, "PART": false}}

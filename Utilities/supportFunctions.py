@@ -4,7 +4,7 @@ import os
 
 
 def create_output_folder(out_path,name):
-    path = str(out_path) + "/" + name
+    path = str(out_path) + "\\" + name
     try:
         os.makedirs(path)
         #path.append(path)
@@ -19,7 +19,7 @@ def create_output_folder(out_path,name):
 def simlist(input_path):
     # function searches all sim files in inp folder
     print("Searching for case.foam files...")
-    list_cases = glob.glob(str(input_path) + "/**/case.foam", recursive=True)
+    list_cases = glob.glob(str(input_path) + "\\**\\case.foam", recursive=True)
 
     if list_cases:
         print(str(len(list_cases)) + " cases found.")
