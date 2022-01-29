@@ -1,6 +1,6 @@
-from Utilities.supportFunctions import select_sim, create_output_folder
-from paraview.simple import *
-from Utilities.viewsDict import car_views
+import supportFunctions
+import paraview.simple as pvs
+import viewsDict
 import glob
 
 

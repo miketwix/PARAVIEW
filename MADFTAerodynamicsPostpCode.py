@@ -50,7 +50,7 @@ start_time = time.time()
 # Clean everything in output folder
 files = os.listdir(setup_info["FolderInfo"]["outFolder"])
 for f in files:
-    os.rmdir(setup_info["FolderInfo"]["outFolder"] + "/" + f)
+    os.rmdir(setup_info["FolderInfo"]["outFolder"] + "\\" + f)
 ########################################################################################################################
 # ------------------------------------------------- Postproc run type branch selection --------------------------------#
 ########################################################################################################################
