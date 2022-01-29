@@ -24,8 +24,8 @@ import time
 # Library to use .json files
 import json
 
-current_loc = "/home/administrador/PycharmProjects/Postprocessing"
-utilities_loc = (str(current_loc) + "/Utilities")
+current_loc = "C:\\Users\\Usuario\\Documents\\MADFT\\Postprocessing"
+utilities_loc = (str(current_loc) + "\\Utilities")
 sys.path.append(utilities_loc)
 
 import Analysis as Analyze
@@ -34,7 +34,7 @@ import Analysis as Analyze
 # ------------------------------------------------- CONFIG DATA IMPORT-------- ----------------------------------------#
 ########################################################################################################################
 # Opening JSON file
-f = open("/home/administrador/PycharmProjects/Postprocessing/config.json")
+f = open("C:\\Users\\Usuario\\Documents\\MADFT\\Postprocessing\\config.json")
 
 # returns JSON object as
 # a dictionary
