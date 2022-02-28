@@ -67,4 +67,3 @@ else:
 print("The process finished successfully.")
 print("Execution time: %s seconds" % (time.time() - start_time))
 
-print(hola)
