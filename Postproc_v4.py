@@ -13,5 +13,14 @@
 # ------------------------------------------ Import of libraries ----------------------------------------------------- #
 import os
 import sys
+import json
+# Opening JSON file
+f = open("C:\Users\Usuario\Desktop\Paraview_Batch_Postproc")
 
+# returns JSON object as
+# a dictionary
+setup_info = json.load(f)
+
+# Closing file
+f.close()
 # ------------------------------------------ Environment configuration------------------------------------------------ #
