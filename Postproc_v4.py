@@ -15,7 +15,7 @@ import os
 import sys
 import json
 # Opening JSON file
-f = open("C:\Users\Usuario\Desktop\Paraview_Batch_Postproc")
+f = open("C:\\Users\\Usuario\\Desktop\\Paraview_Batch_Postproc\\config.json")
 
 # returns JSON object as
 # a dictionary
