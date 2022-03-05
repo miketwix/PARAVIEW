@@ -12,3 +12,4 @@ def remove_files(folder_path):
 
 
 remove_files(input("Write the path of your : ")) # example of path c:/Users/fitir/Desktop/prueba paython1
+#hola*
