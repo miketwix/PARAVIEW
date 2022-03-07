@@ -11,16 +11,13 @@
 # -------------------------------------------------------------------------------------------------------------------- #
 
 # ------------------------------------------ Import of libraries ----------------------------------------------------- #
-import os
-import sys
-import json
-# Opening JSON file
-f = open("C:\\Users\\Usuario\\Desktop\\Paraview_Batch_Postproc\\config.json")
-
-# returns JSON object as
-# a dictionary
-setup_info = json.load(f)
-
-# Closing file
-f.close()
+from Auxiliar_Functions import env_config as envConfig
+from Auxiliar_Functions import jasonImport as getInf
 # ------------------------------------------ Environment configuration------------------------------------------------ #
+# Get the simulations data from JSON files
+setup_info = getInf.get_info()
+# Clean the Output folder
+envConfig.remove_files(setup_info["FolderInfo"]["outFolder"])
+# Find the simulations
+sim_list = envConfig.folder_names(setup_info["FolderInfo"]["inFolder"])
+print(sim_list)
