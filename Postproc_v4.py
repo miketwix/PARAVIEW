@@ -20,4 +20,3 @@ setup_info = getInf.get_info()
 envConfig.remove_files(setup_info["FolderInfo"]["outFolder"])
 # Find the simulations
 sim_list = envConfig.folder_names(setup_info["FolderInfo"]["inFolder"])
-print(sim_list)
