@@ -24,7 +24,7 @@ import time
 # Library to use .json files
 import json
 
-current_loc = "C:\\Users\\Gabi\\PycharmProjects\\Postprocessing"
+current_loc = "C:\\Users\\Usuario\\Documents\\MADFT\\Postprocessing"
 utilities_loc = (str(current_loc) + "\\Utilities")
 sys.path.append(utilities_loc)
 
@@ -34,7 +34,7 @@ import Analysis as Analyze
 # ------------------------------------------------- CONFIG DATA IMPORT-------- ----------------------------------------#
 ########################################################################################################################
 # Opening JSON file
-f = open("C:\\Users\\Gabi\\PycharmProjects\\Postprocessing\\config.json")
+f = open("C:\\Users\\Usuario\\Documents\\MADFT\\Postprocessing\\config.json")
 
 # returns JSON object as
 # a dictionary
@@ -50,7 +50,7 @@ start_time = time.time()
 # Clean everything in output folder
 files = os.listdir(setup_info["FolderInfo"]["outFolder"])
 for f in files:
-    os.rmdir(setup_info["FolderInfo"]["outFolder"] + "/" + f)
+    os.rmdir(setup_info["FolderInfo"]["outFolder"] + "\\" + f)
 ########################################################################################################################
 # ------------------------------------------------- Postproc run type branch selection --------------------------------#
 ########################################################################################################################
@@ -66,3 +66,4 @@ else:
 
 print("The process finished successfully.")
 print("Execution time: %s seconds" % (time.time() - start_time))
+
