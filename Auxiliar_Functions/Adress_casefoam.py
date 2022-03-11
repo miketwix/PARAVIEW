@@ -1,9 +1,12 @@
 import glob
 
 def find_casefoam(targetPattern):
-    targetExtension = "*case.foam"
-    files = glob.glob(targetPattern+targetExtension)
-    files += glob.glob(targetPattern+"**/"+targetExtension)
+    targetExtension1 = "*case.foam"
+    targetExtension2 = "*.stl"
+    files = glob.glob(targetPattern+targetExtension1)
+    files += glob.glob(targetPattern+"**/"+targetExtension1)
+    files += glob.glob(targetPattern + targetExtension2)
+    files += glob.glob(targetPattern + "**/" + targetExtension2)
     print(files)
 
 
