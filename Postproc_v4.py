@@ -12,12 +12,23 @@
 
 # ------------------------------------------ Import of libraries ----------------------------------------------------- #
 from Auxiliar_Functions import env_config as envConfig
-from Auxiliar_Functions import jasonImport as getInf
+from Auxiliar_Functions import info as info
+# ------------------------------------------- Configuration of the simulation objects ---------------------------------#
+
+
+class Simulation:
+    def __init__(self, name, foam, car_stl):
+        self.name = name
+        self.foam = foam
+        self.CAR = car_stl
+
 # ------------------------------------------ Environment configuration------------------------------------------------ #
 # Get the simulations data from JSON files
-setup_info = getInf.get_info()
+setup_info = info.get_info()
 # Clean the Output folder
 envConfig.remove_files(setup_info["FolderInfo"]["outFolder"])
 # Find the simulations
 sim_list = envConfig.folder_names(setup_info["FolderInfo"]["inFolder"])
-print(sim_list)
+
+
+
