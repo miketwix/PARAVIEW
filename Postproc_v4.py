@@ -28,7 +28,11 @@ setup_info = info.get_info()
 # Clean the Output folder
 envConfig.remove_files(setup_info["FolderInfo"]["outFolder"])
 # Find the simulations
-sim_list = envConfig.folder_names(setup_info["FolderInfo"]["inFolder"])
+sim_list = envConfig.find_folders(setup_info["FolderInfo"]["inFolder"])
+for selected_sim in sim_list:
+    a = envConfig.find_files(selected_sim)
+
+
 
 
 
