@@ -28,9 +28,17 @@ setup_info = info.get_info()
 # Clean the Output folder
 envConfig.remove_files(setup_info["FolderInfo"]["outFolder"])
 # Find the simulations
-sim_list = envConfig.find_folders(setup_info["FolderInfo"]["inFolder"])
-for selected_sim in sim_list:
-    a = envConfig.find_files(selected_sim)
+sim_path = envConfig.find_folders(setup_info["FolderInfo"]["inFolder"])
+# Detect number of simulations
+sim_id = list()
+for k in range(len(sim_path)):
+    sim_id.append('s'+str(k+1))
+
+id = 0
+for selected_sim in sim_path:
+    [foam, car] = envConfig.find_files(selected_sim)
+    sim_id[id] = Simulation(selected_sim.replace(setup_info["FolderInfo"]["inFolder"] + "\\", ''), foam, car)
+    id = id + 1
 
 
 
