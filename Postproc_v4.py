@@ -13,6 +13,7 @@
 # ------------------------------------------ Import of libraries ----------------------------------------------------- #
 from Auxiliar_Functions import env_config as envConfig
 from Auxiliar_Functions import info as info
+import os
 # ------------------------------------------- Configuration of the simulation objects ---------------------------------#
 
 
@@ -24,6 +25,9 @@ class Simulation:
 
 # ------------------------------------------ Environment configuration------------------------------------------------ #
 
+# Set current working directory as the file's location
+location = os.path.dirname(__file__)
+os.chdir(location)
 
 # Get the simulations data from JSON files
 setup_info = info.get_info()
@@ -40,7 +44,8 @@ id = 0
 for selected_sim in sim_path:
     [foam, car] = envConfig.find_files(selected_sim)
     sim_id[id] = Simulation(selected_sim.replace(setup_info["FolderInfo"]["inFolder"] + "\\", ''), foam, car)
-    id = id + 1
+    print(id)
+    id = id +1
 
 
 
