@@ -4,7 +4,7 @@ import os
 
 def get_info():
     # Opening JSON file
-    f = open("C:\\Users\\Usuario\\Desktop\\Paraview_Batch_Postproc\\config.json")
+    f = open("config.json")
 
     # returns JSON object as
     # a dictionary
