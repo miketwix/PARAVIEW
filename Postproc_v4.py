@@ -13,6 +13,7 @@
 # ------------------------------------------ Import of libraries ----------------------------------------------------- #
 from Auxiliar_Functions import env_config as envConfig
 from Auxiliar_Functions import info as info
+from Auxiliar_Functions import paraview as pv
 import os
 # ------------------------------------------- Configuration of the simulation objects ---------------------------------#
 
@@ -40,12 +41,16 @@ sim_id = list()
 for k in range(len(sim_path)):
     sim_id.append('s'+str(k+1))
 
-id = 0
+num_sym = 0
+
 for selected_sim in sim_path:
     [foam, car] = envConfig.find_files(selected_sim)
-    sim_id[id] = Simulation(selected_sim.replace(setup_info["FolderInfo"]["inFolder"] + "\\", ''), foam, car)
-    print(id)
-    id = id +1
+    sim_id[num_sym] = Simulation(selected_sim.replace(setup_info["FolderInfo"]["inFolder"] + "\\", ''), foam, car)
+    pv.analyze_sim(setup_info, sim_id[num_sym])
+    print(num_sym)
+    num_sym = num_sym + 1
+
+
 
 
 
