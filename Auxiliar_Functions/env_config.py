@@ -39,7 +39,7 @@ def find_files(targetPattern):
     targetExtension2 = "*.stl"
     files = list()
     files = glob.glob(targetPattern+targetExtension1)
-    files += glob.glob(targetPattern+"**/"+targetExtension1)
+    files += glob.glob(targetPattern+"/**"+targetExtension1)
     files+= glob.glob(targetPattern + targetExtension2)
-    files += glob.glob(targetPattern + "**/" + targetExtension2)
+    files += glob.glob(targetPattern + "/**" + targetExtension2)
     return files
