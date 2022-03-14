@@ -23,6 +23,8 @@ class Simulation:
         self.CAR = car_stl
 
 # ------------------------------------------ Environment configuration------------------------------------------------ #
+
+
 # Get the simulations data from JSON files
 setup_info = info.get_info()
 # Clean the Output folder
