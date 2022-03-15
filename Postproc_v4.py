@@ -44,6 +44,7 @@ setup_info = info.get_info()
 # Clean the Output folder
 valid_ans = 0
 cont = input('Output folder  will be emptied, do you wish to proceed? [y/n]: ')
+
 while valid_ans == 0:
     if cont == 'y':
         envConfig.remove_files(setup_info["FolderInfo"]["outFolder"])
@@ -67,7 +68,6 @@ for selected_sim in sim_path:
     [foam, car] = envConfig.find_files(selected_sim)
     sim_id[num_sym] = Simulation(selected_sim.replace(setup_info["FolderInfo"]["inFolder"] + "\\", ''), foam, car)
     pv.analyze_sim(setup_info, sim_id[num_sym])
-    print(num_sym)
     num_sym = num_sym + 1
 
 

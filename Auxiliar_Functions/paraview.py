@@ -1,3 +1,3 @@
 def analyze_sim (info,sim):
-    print(sim.name)
+    print('Curently analyzing: ' + sim.name)
 
