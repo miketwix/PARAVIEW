@@ -55,8 +55,13 @@ while valid_ans == 0:
         cont = input('Please enter a valid option [y/n]: ')
 
 
+envConfig.clearConsole()
+
 # Find the simulations
 sim_path = envConfig.find_folders(setup_info["FolderInfo"]["inFolder"])
+print('Simulations ready to analyze are:')
+print(sim_path, sep="\n")
+
 # Detect number of simulations
 sim_id = list()
 for k in range(len(sim_path)):
