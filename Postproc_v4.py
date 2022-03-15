@@ -26,14 +26,34 @@ class Simulation:
 
 # ------------------------------------------ Environment configuration------------------------------------------------ #
 
-# Set current working directory as the file's location
-location = os.path.dirname(__file__)
-os.chdir(location)
 
-# Get the simulations data from JSON files
+# Set current working directory as the file's location
+    try:
+        location = os.path.dirname(__file__)
+        os.chdir(location)
+
+    except OSError:
+        print('Working directory could not be set')
+    else:
+        print('Directory successfully set in: ' + location)
+
+
+# Get the simulations' data from JSON files
 setup_info = info.get_info()
+
 # Clean the Output folder
-envConfig.remove_files(setup_info["FolderInfo"]["outFolder"])
+valid_ans = 0
+cont = input('Output folder  will be emptied, do you wish to proceed? [y/n]: ')
+while valid_ans == 0:
+    if cont == 'y':
+        envConfig.remove_files(setup_info["FolderInfo"]["outFolder"])
+        valid_ans = 1
+    elif cont == 'n':
+        quit()
+    else:
+        cont = input('Please enter a valid option [y/n]: ')
+
+
 # Find the simulations
 sim_path = envConfig.find_folders(setup_info["FolderInfo"]["inFolder"])
 # Detect number of simulations
