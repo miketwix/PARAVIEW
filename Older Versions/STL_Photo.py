@@ -78,6 +78,7 @@ renderView1.CameraParallelScale = 1.7023916985995404
 # save screenshot
 SaveScreenshot('C:/Users/fitir/Desktop/Paraview_Batch_Postproc/Case_Files/Prueba de paraview/STL_Photo.png', renderView1, ImageResolution=[2132, 1046])
 
+
 #================================================================
 # addendum: following script captures some of the application
 # state to faithfully reproduce the visualization during playback
