@@ -39,7 +39,14 @@ def find_files(targetPattern):
     targetExtension2 = "*.stl"
     files = list()
     files = glob.glob(targetPattern+targetExtension1)
-    files += glob.glob(targetPattern+"**/"+targetExtension1)
+    files += glob.glob(targetPattern+"/**"+targetExtension1)
     files+= glob.glob(targetPattern + targetExtension2)
-    files += glob.glob(targetPattern + "**/" + targetExtension2)
+    files += glob.glob(targetPattern + "/**" + targetExtension2)
     return files
+
+
+def clearConsole():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
+        command = 'cls'
+    os.system(command)
