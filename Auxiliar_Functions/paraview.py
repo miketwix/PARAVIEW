@@ -59,40 +59,32 @@ def analyze_sim (info,sim):
     sTLSolidLabelingLUT.ScalarRangeInitialized = 1.0
 
     # trace defaults for the display properties.
-    mFT02_311C1402CARstlDisplay.Representation = 'Surface'
-    mFT02_311C1402CARstlDisplay.ColorArrayName = ['CELLS', 'STLSolidLabeling']
-    mFT02_311C1402CARstlDisplay.LookupTable = sTLSolidLabelingLUT
-    mFT02_311C1402CARstlDisplay.SelectTCoordArray = 'None'
-    mFT02_311C1402CARstlDisplay.SelectNormalArray = 'None'
-    mFT02_311C1402CARstlDisplay.SelectTangentArray = 'None'
-    mFT02_311C1402CARstlDisplay.OSPRayScaleFunction = 'PiecewiseFunction'
-    mFT02_311C1402CARstlDisplay.SelectOrientationVectors = 'None'
-    mFT02_311C1402CARstlDisplay.ScaleFactor = 0.2915771007537842
-    mFT02_311C1402CARstlDisplay.SelectScaleArray = 'STLSolidLabeling'
-    mFT02_311C1402CARstlDisplay.GlyphType = 'Arrow'
-    mFT02_311C1402CARstlDisplay.GlyphTableIndexArray = 'STLSolidLabeling'
-    mFT02_311C1402CARstlDisplay.GaussianRadius = 0.01457885503768921
-    mFT02_311C1402CARstlDisplay.SetScaleArray = [None, '']
-    mFT02_311C1402CARstlDisplay.ScaleTransferFunction = 'PiecewiseFunction'
-    mFT02_311C1402CARstlDisplay.OpacityArray = [None, '']
-    mFT02_311C1402CARstlDisplay.OpacityTransferFunction = 'PiecewiseFunction'
-    mFT02_311C1402CARstlDisplay.DataAxesGrid = 'GridAxesRepresentation'
-    mFT02_311C1402CARstlDisplay.PolarAxes = 'PolarAxesRepresentation'
-    mFT02_311C1402CARstlDisplay.SelectInputVectors = ['CELLS', 'STLSolidLabeling']
-    mFT02_311C1402CARstlDisplay.WriteLog = ''
+    CarSTLDisplay.Representation = 'Surface'
+    CarSTLDisplay.ColorArrayName = ['CELLS', 'STLSolidLabeling']
+    CarSTLDisplay.LookupTable = sTLSolidLabelingLUT
+    CarSTLDisplay.OSPRayScaleFunction = 'PiecewiseFunction'
+    CarSTLDisplay.SelectOrientationVectors = 'None'
+    CarSTLDisplay.ScaleFactor = 0.2915771007537842
+    CarSTLDisplay.SelectScaleArray = 'STLSolidLabeling'
+    CarSTLDisplay.GlyphType = 'Arrow'
+    CarSTLDisplay.GlyphTableIndexArray = 'STLSolidLabeling'
+    CarSTLDisplay.GaussianRadius = 0.01457885503768921
+    CarSTLDisplay.SetScaleArray = [None, '']
+    CarSTLDisplay.ScaleTransferFunction = 'PiecewiseFunction'
+    CarSTLDisplay.OpacityArray = [None, '']
+    CarSTLDisplay.OpacityTransferFunction = 'PiecewiseFunction'
+    CarSTLDisplay.DataAxesGrid = 'GridAxesRepresentation'
+    CarSTLDisplay.PolarAxes = 'PolarAxesRepresentation'
 
     # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
-    mFT02_311C1402CARstlDisplay.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062,
+    CarSTLDisplay.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062,
                                                               1.0, 0.5, 0.0]
 
     # show color bar/color legend
-    mFT02_311C1402CARstlDisplay.SetScalarBarVisibility(renderView1, True)
+    CarSTLDisplay.SetScalarBarVisibility(renderView1, True)
 
     # get the material library
     materialLibrary1 = GetMaterialLibrary()
-
-    # reset view to fit data
-    renderView1.ResetCamera(False)
 
     # get opacity transfer function/opacity map for 'STLSolidLabeling'
     sTLSolidLabelingPWF = GetOpacityTransferFunction('STLSolidLabeling')
@@ -102,9 +94,6 @@ def analyze_sim (info,sim):
     # get layout
     layout1 = GetLayout()
 
-    # layout/tab size in pixels
-    layout1.SetSize(2132, 1046)
-
     # current camera placement for renderView1
     renderView1.CameraPosition = [-4.536598631089438, 4.056588839416917, 1.5828243202411878]
     renderView1.CameraFocalPoint = [0.5183476589260684, -0.02966465871146555, 0.5758308368413083]
@@ -112,7 +101,8 @@ def analyze_sim (info,sim):
     renderView1.CameraParallelScale = 1.7023916985995404
 
     # save screenshot
-    SaveScreenshot('C:/Users/fitir/Desktop/Paraview_Batch_Postproc/Case_Files/Prueba de paraview/STL_Photo.png',
+    print(info['FolderInfo']['outFolder']+'\\foto'+str(sim.name)+'.png')
+    SaveScreenshot(info['FolderInfo']['outFolder']+'\\foto'+str(sim.name)+'.png',
                    renderView1, ImageResolution=[2132, 1046])
 
     # ================================================================
@@ -122,9 +112,6 @@ def analyze_sim (info,sim):
 
     # --------------------------------
     # saving layout sizes for layouts
-
-    # layout/tab size in pixels
-    layout1.SetSize(2132, 1046)
 
     # -----------------------------------
     # saving camera placements for views
