@@ -1,7 +1,7 @@
 import os
 import shutil
 import glob
-
+from pathlib import Path
 def remove_files(folder_path):
     for file_object in os.listdir(folder_path):
         Files = os.path.join(folder_path, file_object)
@@ -63,3 +63,7 @@ def clearConsole():
     if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
         command = 'cls'
     os.system(command)
+
+def simname_creator(output_path,sim_name):
+  path = Path(output_path+'\\'+sim_name)
+  path.mkdir(parents=True)

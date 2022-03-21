@@ -14,6 +14,7 @@
 from Auxiliar_Functions import env_config as envConfig
 from Auxiliar_Functions import info as info
 from Auxiliar_Functions import paraview as pv
+
 import os
 # ------------------------------------------- Configuration of the simulation objects ---------------------------------#
 
