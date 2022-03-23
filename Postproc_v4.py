@@ -20,10 +20,12 @@ import os
 
 
 class Simulation:
-    def __init__(self, name, foam, car_stl):
+    def __init__(self, name, foam, car_stl, inFolder, outFolder):
         self.name = name
         self.foam = foam
         self.CAR = car_stl
+        self.inFolder = inFolder
+        self.outFolder = outFolder
 
 # ------------------------------------------ Environment configuration------------------------------------------------ #
 
@@ -72,7 +74,8 @@ num_sym = 0
 
 for selected_sim in sim_path:
     [foam, car] = envConfig.find_files(selected_sim)
-    sim_id[num_sym] = Simulation(selected_sim.replace(setup_info["FolderInfo"]["inFolder"] + "\\", ''), foam, car)
+    name = selected_sim.replace(setup_info["FolderInfo"]["inFolder"] + "\\", '')
+    sim_id[num_sym] = Simulation(name, foam, car, selected_sim, envConfig.simname_creator(setup_info["FolderInfo"]["outFolder"],name))
     pv.analyze_sim(setup_info, sim_id[num_sym])
     num_sym = num_sym + 1
 

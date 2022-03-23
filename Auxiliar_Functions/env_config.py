@@ -67,3 +67,6 @@ def clearConsole():
 def simname_creator(output_path,sim_name):
   path = Path(output_path+'\\'+sim_name)
   path.mkdir(parents=True)
+
+  return str(path)
+

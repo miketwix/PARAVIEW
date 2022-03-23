@@ -101,7 +101,7 @@ def analyze_sim (info,sim):
     renderView1.CameraParallelScale = 1.7023916985995404
 
     # save screenshot
-    SaveScreenshot(info['FolderInfo']['outFolder']+'\\foto'+str(sim.name)+'.png',
+    SaveScreenshot(str(sim.outFolder)+'\\foto'+str(sim.name)+'.png',
                    renderView1, ImageResolution=[2132, 1046])
 
     # ================================================================
