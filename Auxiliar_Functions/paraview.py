@@ -1,4 +1,5 @@
 from paraview.simple import *
+from viewsDict import *
 
 def analyze_sim (info,sim):
     print('Curently analyzing: ' + sim.name)
@@ -93,16 +94,19 @@ def analyze_sim (info,sim):
 
     # get layout
     layout1 = GetLayout()
-
+    for i in [1, 2, 3]:
+        for j in car_views()[i].keys():
+            # info = ""
+            # sim = definido por ParaView
+            renderView1.CameraPosition = car_views()[i][j]["Position"]
+            renderView1.CameraFocalPoint = car_views()[i][j]["FocalPoint"]
+            renderView1.CameraViewUp = car_views()[i][j]["ViewUp"]
+            renderView1.CameraParallelScale = car_views()[i][j]["ParallelScale"]
     # current camera placement for renderView1
-    renderView1.CameraPosition = [-4.536598631089438, 4.056588839416917, 1.5828243202411878]
-    renderView1.CameraFocalPoint = [0.5183476589260684, -0.02966465871146555, 0.5758308368413083]
-    renderView1.CameraViewUp = [0.22769322072305787, 0.04193178077994626, 0.9728296474704003]
-    renderView1.CameraParallelScale = 1.7023916985995404
-
     # save screenshot
-    SaveScreenshot(str(sim.outFolder)+'\\foto'+str(sim.name)+'.png',
-                   renderView1, ImageResolution=[2132, 1046])
+            viewName = car_views()[0][i - 1] + "_" + j
+            SaveScreenshot(str(sim.outFolder)+'\\foto_'+str(sim.name)+'_'+viewName+'.png',
+                           renderView1, ImageResolution=[2132, 1046])
 
     # ================================================================
     # addendum: following script captures some of the application
@@ -114,15 +118,8 @@ def analyze_sim (info,sim):
 
     # -----------------------------------
     # saving camera placements for views
-
     # current camera placement for renderView1
-    renderView1.CameraPosition = [-4.536598631089438, 4.056588839416917, 1.5828243202411878]
-    renderView1.CameraFocalPoint = [0.5183476589260684, -0.02966465871146555, 0.5758308368413083]
-    renderView1.CameraViewUp = [0.22769322072305787, 0.04193178077994626, 0.9728296474704003]
-    renderView1.CameraParallelScale = 1.7023916985995404
-
     # --------------------------------------------
     # uncomment the following to render all views
     # RenderAllViews()
     # alternatively, if you want to write images, you can use SaveScreenshot(...).
-

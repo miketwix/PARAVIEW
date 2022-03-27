@@ -2,7 +2,7 @@ def car_views():
     # MODIFY VIEWS HERE #######################################################################################
 
     # VIEWS DICTIONARIES. There are currently three dictionaries
-    # which contain data por stl positioning for the different
+    # which contain data por stl positioning for the differentdw
     # views in each part of the code. Each of these dictionaries
     # contain a number of dictionaries (one for each view). If
     # you want to add a custom view to any of these, just copy
@@ -13,6 +13,7 @@ def car_views():
 
     # Definition of dictionaries containing view parameters for each view.
     # Dictionaries for stl file views
+
     stl_top_view_dictionary = {
         "Position": [0.55, 0, 4.0],
         "FocalPoint": [0.55, 0, 0.4],
@@ -138,4 +139,4 @@ def car_views():
         "Back": car_back_view_dictionary,
         "Isometric": car_isometric_view_dictionary
     }
-    return car_views_dictionary, stl_views_dictionary, slice_views_dictionary
+    return ["STL", "Slice","Car"], stl_views_dictionary, slice_views_dictionary, car_views_dictionary
