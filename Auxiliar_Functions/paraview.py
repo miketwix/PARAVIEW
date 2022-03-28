@@ -1,7 +1,13 @@
 from paraview.simple import *
-from viewsDict import *
+from Auxiliar_Functions.viewsDict import car_views
 
 def analyze_sim (info,sim):
+
+    # ------------------------------- Import statements and pre-analysis confiuration -------------------------------- #
+    [stl_camera, slice_camera, car_camera] = car_views()
+    stl_views = dict.keys(stl_camera)
+    # ---------------------------------------------------------------------------------------------------------------- #
+
     print('Curently analyzing: ' + sim.name)
 
     #### disable automatic camera reset on 'Show'
@@ -94,32 +100,12 @@ def analyze_sim (info,sim):
 
     # get layout
     layout1 = GetLayout()
-    for i in [1, 2, 3]:
-        for j in car_views()[i].keys():
-            # info = ""
-            # sim = definido por ParaView
-            renderView1.CameraPosition = car_views()[i][j]["Position"]
-            renderView1.CameraFocalPoint = car_views()[i][j]["FocalPoint"]
-            renderView1.CameraViewUp = car_views()[i][j]["ViewUp"]
-            renderView1.CameraParallelScale = car_views()[i][j]["ParallelScale"]
+
+    for stl_view in stl_views:
+        renderView1.CameraPosition = stl_camera[stl_view]["Position"]
+        renderView1.CameraFocalPoint = stl_camera[stl_view]["FocalPoint"]
+        renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
+        renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
     # current camera placement for renderView1
     # save screenshot
-            viewName = car_views()[0][i - 1] + "_" + j
-            SaveScreenshot(str(sim.outFolder)+'\\foto_'+str(sim.name)+'_'+viewName+'.png',
-                           renderView1, ImageResolution=[2132, 1046])
-
-    # ================================================================
-    # addendum: following script captures some of the application
-    # state to faithfully reproduce the visualization during playback
-    # ================================================================
-
-    # --------------------------------
-    # saving layout sizes for layouts
-
-    # -----------------------------------
-    # saving camera placements for views
-    # current camera placement for renderView1
-    # --------------------------------------------
-    # uncomment the following to render all views
-    # RenderAllViews()
-    # alternatively, if you want to write images, you can use SaveScreenshot(...).
+        SaveScreenshot(str(sim.outFolder)+'\\foto_'+str(sim.name)+'_'+stl_view+'.png', renderView1, ImageResolution=[2132, 1046])

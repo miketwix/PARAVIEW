@@ -139,4 +139,5 @@ def car_views():
         "Back": car_back_view_dictionary,
         "Isometric": car_isometric_view_dictionary
     }
-    return ["STL", "Slice","Car"], stl_views_dictionary, slice_views_dictionary, car_views_dictionary
+    return stl_views_dictionary, slice_views_dictionary, car_views_dictionary
+
