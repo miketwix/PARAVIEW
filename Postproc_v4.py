@@ -81,9 +81,6 @@ for selected_sim in sim_path:
     pv.analyze_sim(setup_info, sim_id[num_sym])
     num_sym = num_sym + 1
 
-analyze_sim(setup_info,name)
-
-
 
 
 
