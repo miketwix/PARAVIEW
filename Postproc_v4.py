@@ -16,6 +16,8 @@ from Auxiliar_Functions import info as info
 from Auxiliar_Functions import paraview as pv
 
 import os
+from paraview.simple import *
+from viewsDict import *
 # ------------------------------------------- Configuration of the simulation objects ---------------------------------#
 
 
@@ -79,7 +81,7 @@ for selected_sim in sim_path:
     pv.analyze_sim(setup_info, sim_id[num_sym])
     num_sym = num_sym + 1
 
-
+analyze_sim(setup_info,name)
 
 
 
