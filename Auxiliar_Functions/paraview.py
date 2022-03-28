@@ -108,4 +108,5 @@ def analyze_sim (info,sim):
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
     # current camera placement for renderView1
     # save screenshot
-        SaveScreenshot(str(sim.outFolder)+'\\foto_'+str(sim.name)+'_'+stl_view+'.png', renderView1, ImageResolution=[2132, 1046])
+        SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'.png', renderView1, ImageResolution=info["ImageRes"])
+    Delete(CarSTLDisplay)
