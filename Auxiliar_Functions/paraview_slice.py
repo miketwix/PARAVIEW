@@ -94,7 +94,7 @@ def slice_image(info,sim):
     extractBlock1.Selectors = ['/Root/internalMesh']
 
     # show data in view
-    extractBlock1Display = Show(extractBlock1, renderView1, 'UnstructuredGridRepresentation')
+    extractBlock1Display = Show(extractBlock1, renderView1, 'UnstructuredGridRepresentation')    #eliminado
 
     # trace defaults for the display properties.
     extractBlock1Display.Representation = 'Surface'
@@ -124,13 +124,13 @@ def slice_image(info,sim):
     extractBlock1Display.WriteLog = ''
 
     # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
-    extractBlock1Display.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+    extractBlock1Display.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0] #?
 
     # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
-    extractBlock1Display.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+    extractBlock1Display.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0] #?
 
     # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
-    extractBlock1Display.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+    extractBlock1Display.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0] #?
 
     # hide data in view
     Hide(casefoam, renderView1)
@@ -139,7 +139,7 @@ def slice_image(info,sim):
     extractBlock1Display.SetScalarBarVisibility(renderView1, True)
 
     # update the view to ensure updated data information
-    renderView1.Update()
+    renderView1.Update() #?
 
     # create a new 'Slice'
     slice1 = Slice(registrationName='Slice1', Input=extractBlock1)
@@ -160,34 +160,22 @@ def slice_image(info,sim):
     Show3DWidgets(proxy=slice1.SliceType)
 
     # hide data in view
-    Hide(extractBlock1, renderView1)
+    Hide(extractBlock1, renderView1) #eliminado
 
     # toggle 3D widget visibility (only when running from the GUI)
-    Hide3DWidgets(proxy=slice1.SliceType)
+    Hide3DWidgets(proxy=slice1.SliceType) #eliminado
 
     # toggle 3D widget visibility (only when running from the GUI)
-    Show3DWidgets(proxy=slice1.SliceType)
-
-    # reset view to fit data
-    renderView1.ResetCamera(False)
-
-    # reset view to fit data
-    renderView1.ResetCamera(False)
-
-    # reset view to fit data
-    renderView1.ResetCamera(False)
-
-    # reset view to fit data
-    renderView1.ResetCamera(False)
+    Show3DWidgets(proxy=slice1.SliceType) #eliminado
 
     # Hide orientation axes
-    renderView1.OrientationAxesVisibility = 0
+    renderView1.OrientationAxesVisibility = 0 #eliminado
 
     # reset view to fit data
-    renderView1.ResetCamera(False)
+    renderView1.ResetCamera(False) #?
 
     # toggle 3D widget visibility (only when running from the GUI)
-    Hide3DWidgets(proxy=slice1.SliceType)
+    Hide3DWidgets(proxy=slice1.SliceType) # ?
 
 
     # reset view to fit data
@@ -232,24 +220,23 @@ def slice_image(info,sim):
 
     # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
     slice1Display.OpacityTransferFunction.Points = [-325.0738525390625, 0.0, 0.5, 0.0, 136.2366485595703, 1.0, 0.5, 0.0]
-
-    # hide data in view
-    Hide(extractBlock1, renderView1)
+2
+    Hide(extractBlock1, renderView1) #eliminado
 
     # show color bar/color legend
-    slice1Display.SetScalarBarVisibility(renderView1, True)
+    slice1Display.SetScalarBarVisibility(renderView1, True) #eliminado
 
     # update the view to ensure updated data information
-    renderView1.Update()
+    renderView1.Update() #?
 
     # set scalar coloring
     ColorBy(slice1Display, ('POINTS', 'U', 'Magnitude'))
 
     # Hide the scalar bar for this color map if no visible data is colored by it.
-    HideScalarBarIfNotNeeded(pLUT, renderView1)
+    HideScalarBarIfNotNeeded(pLUT, renderView1) #? igual no permite ver la barra de colores
 
     # rescale color and/or opacity maps used to include current data range
-    slice1Display.RescaleTransferFunctionToDataRange(True, False)
+    slice1Display.RescaleTransferFunctionToDataRange(True, False) #puede ser util para variar el rango del mapa de color
 
     # show color bar/color legend
     slice1Display.SetScalarBarVisibility(renderView1, True)
@@ -278,7 +265,7 @@ def slice_image(info,sim):
     renderView1.ResetCamera(False)
 
     # reset view to fit data
-    renderView1.ResetCamera(False)
+    renderView1.ResetCamera(False) #eliminado
 
     # get layout
     layout1 = GetLayout()
