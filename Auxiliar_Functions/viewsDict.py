@@ -45,7 +45,7 @@ def car_views():
         "ParallelScale": 1.76
     }
     stl_back_view_dictionary = {
-        "Position": [3.6, 0, 0.3],
+        "Position": [4, 0, 1],
         "FocalPoint": [0.55, 0, 0.3],
         "ViewUp": [0.0, 0.0, 1.0],
         "ParallelScale": 1.76

@@ -26,61 +26,8 @@ def analyze_sim (info,sim):
     # show data in view
     CarSTLDisplay = Show(CarSTL, renderView1, 'GeometryRepresentation')
 
-    # get color transfer function/color map for 'STLSolidLabeling'
-    sTLSolidLabelingLUT = GetColorTransferFunction('STLSolidLabeling')
-    sTLSolidLabelingLUT.RescaleOnVisibilityChange = 1
-    sTLSolidLabelingLUT.RGBPoints = [0.0, 0.02, 0.3813, 0.9981, 0.21428571428571427, 0.02000006, 0.424267768,
-                                     0.96906969, 0.42857142857142855, 0.02, 0.467233763, 0.940033043,
-                                     0.6428571428571428, 0.02, 0.5102, 0.911, 0.8571428571428571, 0.02000006,
-                                     0.546401494, 0.872669438, 1.0714285714285712, 0.02, 0.582600362, 0.83433295,
-                                     1.2857142857142856, 0.02, 0.6188, 0.796, 1.4999999999999996, 0.02000006,
-                                     0.652535156, 0.749802434, 1.7142857142857142, 0.02, 0.686267004, 0.703599538,
-                                     1.9285714285714284, 0.02, 0.72, 0.6574, 2.1428571428571423, 0.02000006,
-                                     0.757035456, 0.603735359, 2.357142857142857, 0.02, 0.794067037, 0.55006613,
-                                     2.571428571428571, 0.02, 0.8311, 0.4964, 2.7857142857142856, 0.021354336738172372,
-                                     0.8645368555261631, 0.4285579460761159, 3.0, 0.023312914349117714,
-                                     0.897999359924484, 0.36073871343115577, 3.2142857142857144, 0.015976108242848862,
-                                     0.9310479513349017, 0.2925631815088092, 3.4285714285714284, 0.27421074700988196,
-                                     0.952562960995083, 0.15356836602739213, 3.6428571428571432, 0.4933546281681699,
-                                     0.9619038625309482, 0.11119493614749336, 3.8571428571428568, 0.6439, 0.9773,
-                                     0.0469, 4.071428571428571, 0.762401813, 0.984669591, 0.034600153,
-                                     4.285714285714285, 0.880901185, 0.992033407, 0.022299877, 4.5, 0.9995285432627147,
-                                     0.9995193706781492, 0.0134884641450013, 4.714285714285714, 0.999402998,
-                                     0.955036376, 0.079066628, 4.928571428571429, 0.9994, 0.910666223, 0.148134024,
-                                     5.142857142857142, 0.9994, 0.8663, 0.2172, 5.357142857142857, 0.999269665,
-                                     0.818035981, 0.217200652, 5.571428571428571, 0.999133332, 0.769766184, 0.2172,
-                                     5.7857142857142865, 0.999, 0.7215, 0.2172, 6.0, 0.99913633, 0.673435546,
-                                     0.217200652, 6.2142857142857135, 0.999266668, 0.625366186, 0.2172,
-                                     6.428571428571429, 0.9994, 0.5773, 0.2172, 6.642857142857143, 0.999402998,
-                                     0.521068455, 0.217200652, 6.857142857142857, 0.9994, 0.464832771, 0.2172,
-                                     7.071428571428571, 0.9994, 0.4086, 0.2172, 7.2857142857142865, 0.9947599917687346,
-                                     0.33177297300202935, 0.2112309638520206, 7.5, 0.9867129505479589,
-                                     0.2595183410914934, 0.19012239549291934, 7.7142857142857135, 0.9912458875646419,
-                                     0.14799417507952672, 0.21078892136920357, 7.928571428571429, 0.949903037,
-                                     0.116867171, 0.252900603, 8.142857142857142, 0.903199533, 0.078432949, 0.291800389,
-                                     8.357142857142858, 0.8565, 0.04, 0.3307, 8.57142857142857, 0.798902627, 0.04333345,
-                                     0.358434298, 8.785714285714285, 0.741299424, 0.0466667, 0.386166944, 9.0, 0.6837,
-                                     0.05, 0.4139]
-    sTLSolidLabelingLUT.ColorSpace = 'RGB'
-    sTLSolidLabelingLUT.NanColor = [1.0, 0.0, 0.0]
-    sTLSolidLabelingLUT.NumberOfTableValues = 32
-    sTLSolidLabelingLUT.ScalarRangeInitialized = 1.0
-
     # trace defaults for the display properties.
     CarSTLDisplay.Representation = 'Surface'
-    CarSTLDisplay.ColorArrayName = ['CELLS', 'STLSolidLabeling']
-    CarSTLDisplay.LookupTable = sTLSolidLabelingLUT
-    CarSTLDisplay.OSPRayScaleFunction = 'PiecewiseFunction'
-    CarSTLDisplay.SelectOrientationVectors = 'None'
-    CarSTLDisplay.ScaleFactor = 0.2915771007537842
-    CarSTLDisplay.SelectScaleArray = 'STLSolidLabeling'
-    CarSTLDisplay.GlyphType = 'Arrow'
-    CarSTLDisplay.GlyphTableIndexArray = 'STLSolidLabeling'
-    CarSTLDisplay.GaussianRadius = 0.01457885503768921
-    CarSTLDisplay.SetScaleArray = [None, '']
-    CarSTLDisplay.ScaleTransferFunction = 'PiecewiseFunction'
-    CarSTLDisplay.OpacityArray = [None, '']
-    CarSTLDisplay.OpacityTransferFunction = 'PiecewiseFunction'
     CarSTLDisplay.DataAxesGrid = 'GridAxesRepresentation'
     CarSTLDisplay.PolarAxes = 'PolarAxesRepresentation'
 
@@ -88,16 +35,6 @@ def analyze_sim (info,sim):
     CarSTLDisplay.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062,
                                                               1.0, 0.5, 0.0]
 
-    # show color bar/color legend
-    CarSTLDisplay.SetScalarBarVisibility(renderView1, True)
-
-    # get the material library
-    materialLibrary1 = GetMaterialLibrary()
-
-    # get opacity transfer function/opacity map for 'STLSolidLabeling'
-    sTLSolidLabelingPWF = GetOpacityTransferFunction('STLSolidLabeling')
-    sTLSolidLabelingPWF.Points = [0.0, 0.0, 0.5, 0.0, 9.0, 1.0, 0.5, 0.0]
-    sTLSolidLabelingPWF.ScalarRangeInitialized = 1
 
     # get layout
     layout1 = GetLayout()
@@ -107,10 +44,11 @@ def analyze_sim (info,sim):
         renderView1.CameraFocalPoint = stl_camera[stl_view]["FocalPoint"]
         renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
-    # current camera placement for renderView1
     # save screenshot
         SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'.png', renderView1, ImageResolution=info["ImageRes"])
     Delete(CarSTLDisplay)
+
+
 
     print('Curently analyzing: ' + sim.name + ' .foam')
 
@@ -200,3 +138,193 @@ def analyze_sim (info,sim):
 
     # Properties modified on extractBlock1
     extractBlock1.Selectors = ['/Root/internalMesh']
+    # trace defaults for the display properties.
+    extractBlock1Display.Representation = 'Surface'
+    extractBlock1Display.ColorArrayName = ['POINTS', 'p']
+    extractBlock1Display.LookupTable = pLUT
+    extractBlock1Display.SelectTCoordArray = 'None'
+    extractBlock1Display.SelectNormalArray = 'None'
+    extractBlock1Display.SelectTangentArray = 'None'
+    extractBlock1Display.OSPRayScaleArray = 'p'
+    extractBlock1Display.OSPRayScaleFunction = 'PiecewiseFunction'
+    extractBlock1Display.SelectOrientationVectors = 'U'
+    extractBlock1Display.ScaleFactor = 2.8000000000000003
+    extractBlock1Display.SelectScaleArray = 'p'
+    extractBlock1Display.GlyphType = 'Arrow'
+    extractBlock1Display.GlyphTableIndexArray = 'p'
+    extractBlock1Display.GaussianRadius = 0.14
+    extractBlock1Display.SetScaleArray = ['POINTS', 'p']
+    extractBlock1Display.ScaleTransferFunction = 'PiecewiseFunction'
+    extractBlock1Display.OpacityArray = ['POINTS', 'p']
+    extractBlock1Display.OpacityTransferFunction = 'PiecewiseFunction'
+    extractBlock1Display.DataAxesGrid = 'GridAxesRepresentation'
+    extractBlock1Display.PolarAxes = 'PolarAxesRepresentation'
+    extractBlock1Display.ScalarOpacityFunction = pPWF
+    extractBlock1Display.ScalarOpacityUnitDistance = 0.13087110402528962
+    extractBlock1Display.OpacityArrayName = ['POINTS', 'p']
+    extractBlock1Display.SelectInputVectors = ['POINTS', 'U']
+    extractBlock1Display.WriteLog = ''
+
+    # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
+    extractBlock1Display.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
+                                                       0.0]  # ?
+
+    # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
+    extractBlock1Display.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
+                                                         0.0]  # ?
+
+    # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
+    extractBlock1Display.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
+                                                           0.0]  # ?
+    # show color bar/color legend
+    extractBlock1Display.SetScalarBarVisibility(renderView1, True)
+    # update the view to ensure updated data information
+    renderView1.Update()  # ?
+
+    # create a new 'Slice'
+    slice1 = Slice(registrationName='Slice1', Input=extractBlock1)
+    slice1.SliceType = 'Plane'
+    slice1.HyperTreeGridSlicer = 'Plane'
+    slice1.SliceOffsetValues = [0.0]
+
+    # init the 'Plane' selected for 'SliceType'
+    slice1.SliceType.Origin = [5.5, 3.5, 3.6059999256394804]
+
+    # init the 'Plane' selected for 'HyperTreeGridSlicer'
+    slice1.HyperTreeGridSlicer.Origin = [5.5, 3.5, 3.6059999256394804]
+
+    # set active source
+    SetActiveSource(slice1)
+
+    # toggle 3D widget visibility (only when running from the GUI)
+    Show3DWidgets(proxy=slice1.SliceType)
+    # reset view to fit data
+    renderView1.ResetCamera(False)  # ?
+
+    # toggle 3D widget visibility (only when running from the GUI)
+    Hide3DWidgets(proxy=slice1.SliceType)  # ?
+
+    # reset view to fit data
+    renderView1.ResetCamera(False)
+
+    # Properties modified on slice1.SliceType
+    slice1.SliceType.Origin = [5.5, 0.002919374333856495, 3.6059999256394804]
+    slice1.SliceType.Normal = [0.0, 1.0, 0.0]
+
+    # show data in view
+    slice1Display = Show(slice1, renderView1, 'GeometryRepresentation')
+
+    # trace defaults for the display properties.
+    slice1Display.Representation = 'Surface'
+    slice1Display.ColorArrayName = ['POINTS', 'p']
+    slice1Display.LookupTable = pLUT
+    slice1Display.SelectTCoordArray = 'None'
+    slice1Display.SelectNormalArray = 'None'
+    slice1Display.SelectTangentArray = 'None'
+    slice1Display.OSPRayScaleArray = 'p'
+    slice1Display.OSPRayScaleFunction = 'PiecewiseFunction'
+    slice1Display.SelectOrientationVectors = 'U'
+    slice1Display.ScaleFactor = 2.8000000000000003
+    slice1Display.SelectScaleArray = 'p'
+    slice1Display.GlyphType = 'Arrow'
+    slice1Display.GlyphTableIndexArray = 'p'
+    slice1Display.GaussianRadius = 0.14
+    slice1Display.SetScaleArray = ['POINTS', 'p']
+    slice1Display.ScaleTransferFunction = 'PiecewiseFunction'
+    slice1Display.OpacityArray = ['POINTS', 'p']
+    slice1Display.OpacityTransferFunction = 'PiecewiseFunction'
+    slice1Display.DataAxesGrid = 'GridAxesRepresentation'
+    slice1Display.PolarAxes = 'PolarAxesRepresentation'
+    slice1Display.SelectInputVectors = ['POINTS', 'U']
+    slice1Display.WriteLog = ''
+
+    # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
+    slice1Display.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+
+    # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
+    slice1Display.ScaleTransferFunction.Points = [-325.0738525390625, 0.0, 0.5, 0.0, 136.2366485595703, 1.0, 0.5, 0.0]
+
+    # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
+    slice1Display.OpacityTransferFunction.Points = [-325.0738525390625, 0.0, 0.5, 0.0, 136.2366485595703, 1.0, 0.5, 0.0]
+
+    # update the view to ensure updated data information
+    renderView1.Update()  # ?
+
+    # set scalar coloring
+    ColorBy(slice1Display, ('POINTS', 'U', 'Magnitude'))
+
+    # Hide the scalar bar for this color map if no visible data is colored by it.
+    HideScalarBarIfNotNeeded(pLUT, renderView1)  # ? igual no permite ver la barra de colores
+
+    # rescale color and/or opacity maps used to include current data range
+    slice1Display.RescaleTransferFunctionToDataRange(True,
+                                                     False)  # puede ser util para variar el rango del mapa de color
+
+    # show color bar/color legend
+    slice1Display.SetScalarBarVisibility(renderView1, True) #?
+
+    # get color transfer function/color map for 'U'
+    uLUT = GetColorTransferFunction('U')
+    uLUT.RescaleOnVisibilityChange = 1
+    uLUT.RGBPoints = [0.0, 0.02, 0.3813, 0.9981, 2.790735296602469, 0.02000006, 0.424267768, 0.96906969,
+                      5.581470593204938, 0.02, 0.467233763, 0.940033043, 8.372205889807407, 0.02, 0.5102, 0.911,
+                      11.162941186409876, 0.02000006, 0.546401494, 0.872669438, 13.953676483012345, 0.02, 0.582600362,
+                      0.83433295, 16.744411779614815, 0.02, 0.6188, 0.796, 19.53514707621728, 0.02000006, 0.652535156,
+                      0.749802434, 22.325882372819752, 0.02, 0.686267004, 0.703599538, 25.116617669422222, 0.02, 0.72,
+                      0.6574, 27.90735296602469, 0.02000006, 0.757035456, 0.603735359, 30.698088262627163, 0.02,
+                      0.794067037, 0.55006613, 33.48882355922963, 0.02, 0.8311, 0.4964, 36.2795588558321,
+                      0.021354336738172372, 0.8645368555261631, 0.4285579460761159, 39.07029415243457,
+                      0.023312914349117714, 0.897999359924484, 0.36073871343115577, 41.86102944903704,
+                      0.015976108242848862, 0.9310479513349017, 0.2925631815088092, 44.651764745639504,
+                      0.27421074700988196, 0.952562960995083, 0.15356836602739213, 47.44250004224199,
+                      0.4933546281681699, 0.9619038625309482, 0.11119493614749336, 50.233235338844445, 0.6439, 0.9773,
+                      0.0469, 53.023970635446915, 0.762401813, 0.984669591, 0.034600153, 55.81470593204938, 0.880901185,
+                      0.992033407, 0.022299877, 58.605441228651856, 0.9995285432627147, 0.9995193706781492,
+                      0.0134884641450013, 61.396176525254326, 0.999402998, 0.955036376, 0.079066628, 64.1869118218568,
+                      0.9994, 0.910666223, 0.148134024, 66.97764711845926, 0.9994, 0.8663, 0.2172, 69.76838241506174,
+                      0.999269665, 0.818035981, 0.217200652, 72.5591177116642, 0.999133332, 0.769766184, 0.2172,
+                      75.34985300826668, 0.999, 0.7215, 0.2172, 78.14058830486914, 0.99913633, 0.673435546, 0.217200652,
+                      80.93132360147159, 0.999266668, 0.625366186, 0.2172, 83.72205889807408, 0.9994, 0.5773, 0.2172,
+                      86.51279419467656, 0.999402998, 0.521068455, 0.217200652, 89.30352949127901, 0.9994, 0.464832771,
+                      0.2172, 92.09426478788149, 0.9994, 0.4086, 0.2172, 94.88500008448398, 0.9947599917687346,
+                      0.33177297300202935, 0.2112309638520206, 97.67573538108643, 0.9867129505479589,
+                      0.2595183410914934, 0.19012239549291934, 100.46647067768889, 0.9912458875646419,
+                      0.14799417507952672, 0.21078892136920357, 103.25720597429137, 0.949903037, 0.116867171,
+                      0.252900603, 106.04794127089383, 0.903199533, 0.078432949, 0.291800389, 108.83867656749632,
+                      0.8565, 0.04, 0.3307, 111.62941186409876, 0.798902627, 0.04333345, 0.358434298,
+                      114.42014716070123, 0.741299424, 0.0466667, 0.386166944, 117.21088245730371, 0.6837, 0.05, 0.4139]
+    uLUT.ColorSpace = 'RGB'
+    uLUT.NanColor = [1.0, 0.0, 0.0]
+    uLUT.NumberOfTableValues = 32
+    uLUT.ScalarRangeInitialized = 1.0
+
+    # get opacity transfer function/opacity map for 'U'
+    uPWF = GetOpacityTransferFunction('U')
+    uPWF.Points = [0.0, 0.0, 0.5, 0.0, 117.21088245730371, 1.0, 0.5, 0.0]
+    uPWF.ScalarRangeInitialized = 1
+
+    # Rescale transfer function
+    uLUT.RescaleTransferFunction(0.0, 30.0)
+
+    # Rescale transfer function
+    uPWF.RescaleTransferFunction(0.0, 30.0)
+
+    # reset view to fit data
+    renderView1.ResetCamera(False)
+
+    # get layout
+    layout1 = GetLayout()
+
+    # layout/tab size in pixels
+    layout1.SetSize(2132, 1044)
+
+    for slice_view in slice_views:
+        renderView1.CameraPosition = slice_camera[slcie_view]["Position"]
+        renderView1.CameraFocalPoint = slice_camera[slice_view]["FocalPoint"]
+        renderView1.CameraViewUp = slice_camera[slice_view]["ViewUp"]
+        renderView1.CameraParallelScale = slice_camera[slice_view]["ParallelScale"]
+        # save screenshot
+        SaveScreenshot(str(sim.outFolder) + '\\' + str(sim.name) + '_' + slice_view + '.png', renderView1,
+                       ImageResolution=info["ImageRes"])
+
+
