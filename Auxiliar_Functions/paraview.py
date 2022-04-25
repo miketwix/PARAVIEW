@@ -34,10 +34,45 @@ def analyze_sim (info,sim):
     # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
     CarSTLDisplay.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062,
                                                               1.0, 0.5, 0.0]
+    # create a new 'Logo'
+    logo1 = Logo()
 
+    # show data in view
+    logo1Display = Show(logo1, renderView1, 'LogoSourceRepresentation')
+
+    # a texture
+    mADFT_P_Navy = CreateTexture("C:\\Users\\fitir\\Downloads\\MADFT_P_Navy.png")
+
+    # change texture
+    logo1.Texture = mADFT_P_Navy
+
+    # Properties modified on logo1Display
+    logo1Display.Position = [0.9, 0.9]
+
+    # create a new 'Text'
+    text1 = Text()
+
+    # Properties modified on text1
+    text1.Text = 'mft02_311-c1-402-car'
+
+    # show data in view
+    text1Display = Show(text1, renderView1, 'TextSourceRepresentation')
+
+    # update the view to ensure updated data information
+    renderView1.Update()
+
+    # Properties modified on text1Display
+    text1Display.FontFamily = 'File'
+
+    # Properties modified on text1Display
+    text1Display.FontFile = 'C:\\Users\\fitir\\Desktop\\Paraview_Batch_Postproc\\Templates\\MADFT-Da Mad Rave.ttf'
+
+    # Properties modified on text1Display
+    text1Display.FontSize = 5
 
     # get layout
     layout1 = GetLayout()
+
 
     for stl_view in stl_views:
         renderView1.CameraPosition = stl_camera[stl_view]["Position"]
