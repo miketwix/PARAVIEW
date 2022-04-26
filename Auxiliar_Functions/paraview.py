@@ -53,16 +53,13 @@ def analyze_sim (info,sim):
     text1 = Text()
 
     # Properties modified on text1
-    text1.Text = 'mft02_311-c1-402-car'
+    text1.Text = str(sim.name)
 
     # show data in view
     text1Display = Show(text1, renderView1, 'TextSourceRepresentation')
 
     # update the view to ensure updated data information
     renderView1.Update()
-
-    # Properties modified on text1Display
-    text1Display.FontFamily = 'File'
 
     # Properties modified on text1Display
     text1Display.FontFile = 'C:\\Users\\fitir\\Desktop\\Paraview_Batch_Postproc\\Templates\\MADFT-Da Mad Rave.ttf'
