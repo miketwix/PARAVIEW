@@ -62,6 +62,9 @@ def analyze_sim (info,sim):
     renderView1.Update()
 
     # Properties modified on text1Display
+    text1Display.FontFamily = 'File'
+
+    # Properties modified on text1Display
     text1Display.FontFile = 'C:\\Users\\fitir\\Desktop\\Paraview_Batch_Postproc\\Templates\\MADFT-Da Mad Rave.ttf'
 
     # Properties modified on text1Display
@@ -79,20 +82,46 @@ def analyze_sim (info,sim):
     # save screenshot
         SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'.png', renderView1, ImageResolution=info["ImageRes"])
     Delete(CarSTLDisplay)
-
+## --------------------------------------------------------------------------------------------------------------------------------- ##
 
 
     print('Curently analyzing: ' + sim.name + ' .foam')
 
-    casefoam = SliceReader(registrationName=sim.name + 'car', FileNames=[sim.foam])
-    casefoam.MeshRegions = ['internalMesh']
+    #casefoam = SliceReader(registrationName=sim.name + 'car', FileNames=[sim.foam])
+    # create a new 'OpenFOAMReader'
+    casefoam = OpenFOAMReader(FileName='C:\\Users\\fitir\\Desktop\\Paraview_Batch_Postproc\\Case_Files\\Prueba de paraview\\case.foam') #nombre casefoam
+    casefoam.MeshRegions = ['intern alMesh']
     casefoam.CellArrays = ['U', 'k', 'nut', 'omega', 'p', 'wallShearStress', 'yPlus']
+
     # Properties modified on casefoam
-    casefoam.MeshRegions = ['group/symmetry', 'group/wall', 'internalMesh', 'patch/B12_TE6_B12_TE1', 'patch/B12_TE6_B12_TE147', 'patch/B12_TE6_B12_TE149', 'patch/B12_TE6_B12_TE150', 'patch/B12_TE6_B12_TE151', 'patch/B12_TE6_B12_TE152', 'patch/B12_TE6_B12_TE153', 'patch/B12_TE6_B12_TE154', 'patch/B12_TE6_B12_TE155', 'patch/B14_TE6_B14_TE37', 'patch/B15_TE6_B15_TE1004', 'patch/B15_TE6_B15_TE1005', 'patch/B15_TE6_B15_TE1050', 'patch/B15_TE6_B15_TE1052', 'patch/B15_TE6_B15_TE1056', 'patch/B15_TE6_B15_TE1057', 'patch/B15_TE6_B15_TE982', 'patch/B15_TE6_B15_TE983', 'patch/B15_TE6_B15_TE986', 'patch/B15_TE6_B15_TE987', 'patch/B15_TE6_B15_TE988', 'patch/B15_TE6_B15_TE989', 'patch/B15_TE6_B15_TE990', 'patch/B16_TE6_B16_TE1', 'patch/B16_TE6_B16_TE85', 'patch/B16_TE6_B16_TE87', 'patch/B16_TE6_B16_TE88', 'patch/B16_TE6_B16_TE89', 'patch/B16_TE6_B16_TE90', 'patch/B17_TE6_B17_TE109', 'patch/B17_TE6_B17_TE110', 'patch/B17_TE6_B17_TE112', 'patch/B18_TE6_B18_TE293', 'patch/B18_TE6_B18_TE294', 'patch/B18_TE6_B18_TE295', 'patch/B18_TE6_B18_TE296', 'patch/B18_TE6_B18_TE304', 'patch/B1_TE5_B1_TE138', 'patch/B1_TE5_B1_TE141', 'patch/B1_TE5_B1_TE142', 'patch/B1_TE5_B1_TE143', 'patch/B1_TE5_B1_TE145', 'patch/B1_TE5_B1_TE146', 'patch/B1_TE5_B1_TE2', 'patch/B20_TE6_B20_TE73', 'patch/B20_TE6_B20_TE74', 'patch/B20_TE6_B20_TE77', 'patch/B20_TE6_B20_TE79', 'patch/B21_TE6_B21_TE1', 'patch/B2_TE6_B2_TE1', 'patch/B2_TE6_B2_TE25', 'patch/B3_TE6_B3_TE1', 'patch/B3_TE6_B3_TE337', 'patch/B3_TE6_B3_TE340', 'patch/B4_TE5_B4_TE2', 'patch/B4_TE5_B4_TE242', 'patch/B4_TE5_B4_TE245', 'patch/B4_TE5_B4_TE246', 'patch/B4_TE5_B4_TE247', 'patch/B4_TE5_B4_TE248', 'patch/B4_TE5_B4_TE249', 'patch/B4_TE5_B4_TE250', 'patch/B4_TE5_B4_TE252', 'patch/B5_TE5_B5_TE86', 'patch/B5_TE5_B5_TE91', 'patch/B6_TE5_B6_TE158', 'patch/B6_TE5_B6_TE159', 'patch/B6_TE5_B6_TE161', 'patch/B6_TE5_B6_TE162', 'patch/B6_TE5_B6_TE163', 'patch/B6_TE5_B6_TE164', 'patch/B6_TE5_B6_TE165', 'patch/B6_TE5_B6_TE2', 'patch/B8_TE6_B8_TE73', 'patch/B8_TE6_B8_TE74', 'patch/B8_TE6_B8_TE77', 'patch/B9_TE6_B9_TE1']
+    casefoam.MeshRegions = ['B12_TE6_B12_TE1', 'B12_TE6_B12_TE147', 'B12_TE6_B12_TE149', 'B12_TE6_B12_TE150',
+                            'B12_TE6_B12_TE151', 'B12_TE6_B12_TE152', 'B12_TE6_B12_TE153', 'B12_TE6_B12_TE154',
+                            'B12_TE6_B12_TE155', 'B14_TE6_B14_TE37', 'B15_TE6_B15_TE1004', 'B15_TE6_B15_TE1005',
+                            'B15_TE6_B15_TE1050', 'B15_TE6_B15_TE1052', 'B15_TE6_B15_TE1056', 'B15_TE6_B15_TE1057',
+                            'B15_TE6_B15_TE982', 'B15_TE6_B15_TE983', 'B15_TE6_B15_TE986', 'B15_TE6_B15_TE987',
+                            'B15_TE6_B15_TE988', 'B15_TE6_B15_TE989', 'B15_TE6_B15_TE990', 'B16_TE6_B16_TE1',
+                            'B16_TE6_B16_TE85', 'B16_TE6_B16_TE87', 'B16_TE6_B16_TE88', 'B16_TE6_B16_TE89',
+                            'B16_TE6_B16_TE90', 'B17_TE6_B17_TE109', 'B17_TE6_B17_TE110', 'B17_TE6_B17_TE112',
+                            'B18_TE6_B18_TE293', 'B18_TE6_B18_TE294', 'B18_TE6_B18_TE295', 'B18_TE6_B18_TE296',
+                            'B18_TE6_B18_TE304', 'B1_TE5_B1_TE138', 'B1_TE5_B1_TE141', 'B1_TE5_B1_TE142',
+                            'B1_TE5_B1_TE143', 'B1_TE5_B1_TE145', 'B1_TE5_B1_TE146', 'B1_TE5_B1_TE2',
+                            'B20_TE6_B20_TE73', 'B20_TE6_B20_TE74', 'B20_TE6_B20_TE77', 'B20_TE6_B20_TE79',
+                            'B21_TE6_B21_TE1', 'B2_TE6_B2_TE1', 'B2_TE6_B2_TE25', 'B3_TE6_B3_TE1', 'B3_TE6_B3_TE337',
+                            'B3_TE6_B3_TE340', 'B4_TE5_B4_TE2', 'B4_TE5_B4_TE242', 'B4_TE5_B4_TE245', 'B4_TE5_B4_TE246',
+                            'B4_TE5_B4_TE247', 'B4_TE5_B4_TE248', 'B4_TE5_B4_TE249', 'B4_TE5_B4_TE250',
+                            'B4_TE5_B4_TE252', 'B5_TE5_B5_TE86', 'B5_TE5_B5_TE91', 'B6_TE5_B6_TE158', 'B6_TE5_B6_TE159',
+                            'B6_TE5_B6_TE161', 'B6_TE5_B6_TE162', 'B6_TE5_B6_TE163', 'B6_TE5_B6_TE164',
+                            'B6_TE5_B6_TE165', 'B6_TE5_B6_TE2', 'B8_TE6_B8_TE73', 'B8_TE6_B8_TE74', 'B8_TE6_B8_TE77',
+                            'B9_TE6_B9_TE1', 'boundingBox1', 'boundingBox2', 'boundingBox3', 'boundingBox4',
+                            'boundingBox5', 'boundingBox6', 'internalMesh']
+
     # get active view
-    renderView1 = GetActiveViewOrCreate('RenderView')
+    # get layout
+    layout1 = GetLayout()
+
     # show data in view
     casefoamDisplay = Show(casefoam, renderView1, 'GeometryRepresentation')
+
     # get color transfer function/color map for 'p'
     pLUT = GetColorTransferFunction('p')
     pLUT.RescaleOnVisibilityChange = 1
@@ -133,9 +162,6 @@ def analyze_sim (info,sim):
     casefoamDisplay.Representation = 'Surface'
     casefoamDisplay.ColorArrayName = ['POINTS', 'p']
     casefoamDisplay.LookupTable = pLUT
-    casefoamDisplay.SelectTCoordArray = 'None'
-    casefoamDisplay.SelectNormalArray = 'None'
-    casefoamDisplay.SelectTangentArray = 'None'
     casefoamDisplay.OSPRayScaleArray = 'p'
     casefoamDisplay.OSPRayScaleFunction = 'PiecewiseFunction'
     casefoamDisplay.SelectOrientationVectors = 'U'
@@ -150,33 +176,37 @@ def analyze_sim (info,sim):
     casefoamDisplay.OpacityTransferFunction = 'PiecewiseFunction'
     casefoamDisplay.DataAxesGrid = 'GridAxesRepresentation'
     casefoamDisplay.PolarAxes = 'PolarAxesRepresentation'
-    casefoamDisplay.SelectInputVectors = ['POINTS', 'U']
-    casefoamDisplay.WriteLog = ''
 
     # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
-    casefoamDisplay.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+    #casefoamDisplay.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
 
     # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
-    casefoamDisplay.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+#    casefoamDisplay.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
 
     # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
-    casefoamDisplay.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+ #   casefoamDisplay.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+
+    # show color bar/color legend
+    casefoamDisplay.SetScalarBarVisibility(renderView1, True)
+
     # get opacity transfer function/opacity map for 'p'
     pPWF = GetOpacityTransferFunction('p')
     pPWF.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
     pPWF.ScalarRangeInitialized = 1
+
     # create a new 'Extract Block'
-    extractBlock1 = ExtractBlock(registrationName='ExtractBlock1', Input=casefoam)
+    extractBlock1 = ExtractBlock(Input=casefoam)
 
     # Properties modified on extractBlock1
-    extractBlock1.Selectors = ['/Root/internalMesh']
+    extractBlock1.BlockIndices = [1]
+
+    # show data in view
+    extractBlock1Display = Show(extractBlock1, renderView1, 'UnstructuredGridRepresentation')
+
     # trace defaults for the display properties.
     extractBlock1Display.Representation = 'Surface'
     extractBlock1Display.ColorArrayName = ['POINTS', 'p']
     extractBlock1Display.LookupTable = pLUT
-    extractBlock1Display.SelectTCoordArray = 'None'
-    extractBlock1Display.SelectNormalArray = 'None'
-    extractBlock1Display.SelectTangentArray = 'None'
     extractBlock1Display.OSPRayScaleArray = 'p'
     extractBlock1Display.OSPRayScaleFunction = 'PiecewiseFunction'
     extractBlock1Display.SelectOrientationVectors = 'U'
@@ -193,28 +223,25 @@ def analyze_sim (info,sim):
     extractBlock1Display.PolarAxes = 'PolarAxesRepresentation'
     extractBlock1Display.ScalarOpacityFunction = pPWF
     extractBlock1Display.ScalarOpacityUnitDistance = 0.13087110402528962
-    extractBlock1Display.OpacityArrayName = ['POINTS', 'p']
-    extractBlock1Display.SelectInputVectors = ['POINTS', 'U']
-    extractBlock1Display.WriteLog = ''
+    extractBlock1Display.ExtractedBlockIndex = 1
 
     # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
-    extractBlock1Display.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
-                                                       0.0]  # ?
+   # extractBlock1Display.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
+                                                       #0.0]
 
     # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
-    extractBlock1Display.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
-                                                         0.0]  # ?
+    #extractBlock1Display.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
+                                                        # 0.0]
 
     # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
-    extractBlock1Display.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
-                                                           0.0]  # ?
+    #extractBlock1Display.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
+                                                         #  0.0]
+
     # show color bar/color legend
     extractBlock1Display.SetScalarBarVisibility(renderView1, True)
-    # update the view to ensure updated data information
-    renderView1.Update()  # ?
 
     # create a new 'Slice'
-    slice1 = Slice(registrationName='Slice1', Input=extractBlock1)
+    slice1 = Slice(Input=extractBlock1)
     slice1.SliceType = 'Plane'
     slice1.HyperTreeGridSlicer = 'Plane'
     slice1.SliceOffsetValues = [0.0]
@@ -225,23 +252,9 @@ def analyze_sim (info,sim):
     # init the 'Plane' selected for 'HyperTreeGridSlicer'
     slice1.HyperTreeGridSlicer.Origin = [5.5, 3.5, 3.6059999256394804]
 
-    # set active source
-    SetActiveSource(slice1)
-
-    # toggle 3D widget visibility (only when running from the GUI)
-    Show3DWidgets(proxy=slice1.SliceType)
-    # reset view to fit data
-    renderView1.ResetCamera(False)  # ?
-
-    # toggle 3D widget visibility (only when running from the GUI)
-    Hide3DWidgets(proxy=slice1.SliceType)  # ?
-
-    # reset view to fit data
-    renderView1.ResetCamera(False)
-
     # Properties modified on slice1.SliceType
-    slice1.SliceType.Origin = [5.5, 0.002919374333856495, 3.6059999256394804]
-    slice1.SliceType.Normal = [0.0, 1.0, 0.0]
+    slice1.SliceType.Origin = [5.5, 0.1898446190773491, 3.6059999256394804]
+    slice1.SliceType.Normal = [0.0, 1.0, 0.0]  # poner el plano en direccion y
 
     # show data in view
     slice1Display = Show(slice1, renderView1, 'GeometryRepresentation')
@@ -250,9 +263,6 @@ def analyze_sim (info,sim):
     slice1Display.Representation = 'Surface'
     slice1Display.ColorArrayName = ['POINTS', 'p']
     slice1Display.LookupTable = pLUT
-    slice1Display.SelectTCoordArray = 'None'
-    slice1Display.SelectNormalArray = 'None'
-    slice1Display.SelectTangentArray = 'None'
     slice1Display.OSPRayScaleArray = 'p'
     slice1Display.OSPRayScaleFunction = 'PiecewiseFunction'
     slice1Display.SelectOrientationVectors = 'U'
@@ -267,33 +277,40 @@ def analyze_sim (info,sim):
     slice1Display.OpacityTransferFunction = 'PiecewiseFunction'
     slice1Display.DataAxesGrid = 'GridAxesRepresentation'
     slice1Display.PolarAxes = 'PolarAxesRepresentation'
-    slice1Display.SelectInputVectors = ['POINTS', 'U']
-    slice1Display.WriteLog = ''
 
     # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
     slice1Display.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
 
     # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
-    slice1Display.ScaleTransferFunction.Points = [-325.0738525390625, 0.0, 0.5, 0.0, 136.2366485595703, 1.0, 0.5, 0.0]
+    slice1Display.ScaleTransferFunction.Points = [-294.15997314453125, 0.0, 0.5, 0.0, 140.1374053955078, 1.0, 0.5, 0.0]
 
     # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
-    slice1Display.OpacityTransferFunction.Points = [-325.0738525390625, 0.0, 0.5, 0.0, 136.2366485595703, 1.0, 0.5, 0.0]
+    slice1Display.OpacityTransferFunction.Points = [-294.15997314453125, 0.0, 0.5, 0.0, 140.1374053955078, 1.0, 0.5,
+                                                    0.0]
+
+    # show color bar/color legend
+    slice1Display.SetScalarBarVisibility(renderView1, True)
 
     # update the view to ensure updated data information
-    renderView1.Update()  # ?
+    renderView1.Update()
+
+    # Rescale transfer function
+    pLUT.RescaleTransferFunction(-20.0, 20.0)
+
+    # Rescale transfer function
+    pPWF.RescaleTransferFunction(-20.0, 20.0)
 
     # set scalar coloring
     ColorBy(slice1Display, ('POINTS', 'U', 'Magnitude'))
 
     # Hide the scalar bar for this color map if no visible data is colored by it.
-    HideScalarBarIfNotNeeded(pLUT, renderView1)  # ? igual no permite ver la barra de colores
+    HideScalarBarIfNotNeeded(pLUT, renderView1)
 
     # rescale color and/or opacity maps used to include current data range
-    slice1Display.RescaleTransferFunctionToDataRange(True,
-                                                     False)  # puede ser util para variar el rango del mapa de color
+    slice1Display.RescaleTransferFunctionToDataRange(True, False)
 
     # show color bar/color legend
-    slice1Display.SetScalarBarVisibility(renderView1, True) #?
+    slice1Display.SetScalarBarVisibility(renderView1, True)
 
     # get color transfer function/color map for 'U'
     uLUT = GetColorTransferFunction('U')
@@ -336,27 +353,15 @@ def analyze_sim (info,sim):
     uPWF.ScalarRangeInitialized = 1
 
     # Rescale transfer function
-    uLUT.RescaleTransferFunction(0.0, 30.0)
+    uLUT.RescaleTransferFunction(-30.0, 30.0)
 
-    # Rescale transfer function
-    uPWF.RescaleTransferFunction(0.0, 30.0)
-
-    # reset view to fit data
-    renderView1.ResetCamera(False)
-
-    # get layout
-    layout1 = GetLayout()
-
-    # layout/tab size in pixels
-    layout1.SetSize(2132, 1044)
+    #### saving camera placements for all active views
 
     for slice_view in slice_views:
-        renderView1.CameraPosition = slice_camera[slcie_view]["Position"]
+        renderView1.CameraPosition = slice_camera[slice_view]["Position"]
         renderView1.CameraFocalPoint = slice_camera[slice_view]["FocalPoint"]
         renderView1.CameraViewUp = slice_camera[slice_view]["ViewUp"]
         renderView1.CameraParallelScale = slice_camera[slice_view]["ParallelScale"]
         # save screenshot
         SaveScreenshot(str(sim.outFolder) + '\\' + str(sim.name) + '_' + slice_view + '.png', renderView1,
                        ImageResolution=info["ImageRes"])
-
-
