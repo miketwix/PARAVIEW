@@ -42,7 +42,7 @@ class Simulation:
 
 
 # Get the simulations' data from JSON files
-setup_info = info.get_info()
+setup_info = info.get_info("config.json")
 
 # Clean the Output folder
 valid_ans = 0

@@ -2,6 +2,8 @@ import os
 import shutil
 import glob
 from pathlib import Path
+import csv
+
 def remove_files(folder_path):
     for file_object in os.listdir(folder_path):
         Files = os.path.join(folder_path, file_object)
@@ -46,7 +48,6 @@ def find_folders(ruta):
                         casefoam_files.append(sim_list[i])
     return casefoam_list
 
-
 def find_files(targetPattern):
     targetExtension1 = "*case.foam"
     targetExtension2 = "*.stl"
@@ -56,7 +57,6 @@ def find_files(targetPattern):
     files+= glob.glob(targetPattern + targetExtension2)
     files += glob.glob(targetPattern + "/**" + targetExtension2)
     return files
-
 
 def clearConsole():
     command = 'clear'
@@ -69,4 +69,16 @@ def simname_creator(output_path,sim_name):
   path.mkdir(parents=True)
 
   return str(path)
+
+def csv_reader(ruta,l):
+  with open(ruta) as File:
+        reader = csv.reader(File)
+        result = 0
+        lista = list()
+        for row in reader:
+             lista.append(row)
+        for x in range(75, 101):
+             result = result + float(lista[x][l])
+  result = result / 25
+  return result
 

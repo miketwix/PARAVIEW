@@ -2,9 +2,9 @@ import json
 import os
 
 
-def get_info():
+def get_info(FileName):
     # Opening JSON file
-    f = open("config.json")
+    f = open(FileName)
 
     # returns JSON object as
     # a dictionary
