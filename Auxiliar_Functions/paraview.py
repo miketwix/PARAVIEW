@@ -87,7 +87,7 @@ def analyze_sim (info,sim):
 
     print('Curently analyzing: ' + sim.name + ' .foam')
 
-    #casefoam = SliceReader(registrationName=sim.name + 'car', FileNames=[sim.foam])
+    casefoam = SliceReader(registrationName=sim.name + 'car', FileNames=[sim.foam])
     # create a new 'OpenFOAMReader'
     casefoam = OpenFOAMReader(FileName='C:\\Users\\fitir\\Desktop\\Paraview_Batch_Postproc\\Case_Files\\Prueba de paraview\\case.foam') #nombre casefoam
     casefoam.MeshRegions = ['intern alMesh']
@@ -178,13 +178,13 @@ def analyze_sim (info,sim):
     casefoamDisplay.PolarAxes = 'PolarAxesRepresentation'
 
     # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
-    #casefoamDisplay.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+    casefoamDisplay.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
 
     # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
-#    casefoamDisplay.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+    casefoamDisplay.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
 
     # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
- #   casefoamDisplay.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
+    casefoamDisplay.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
 
     # show color bar/color legend
     casefoamDisplay.SetScalarBarVisibility(renderView1, True)
@@ -226,21 +226,20 @@ def analyze_sim (info,sim):
     extractBlock1Display.ExtractedBlockIndex = 1
 
     # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
-   # extractBlock1Display.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
+    extractBlock1Display.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
                                                        #0.0]
 
     # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
-    #extractBlock1Display.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
-                                                        # 0.0]
+    extractBlock1Display.ScaleTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
+                                                            # 0.0]
 
     # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
-    #extractBlock1Display.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5,
-                                                         #  0.0]
+    extractBlock1Display.OpacityTransferFunction.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
 
     # show color bar/color legend
     extractBlock1Display.SetScalarBarVisibility(renderView1, True)
 
-    # create a new 'Slice'
+    #create a new 'Slice'
     slice1 = Slice(Input=extractBlock1)
     slice1.SliceType = 'Plane'
     slice1.HyperTreeGridSlicer = 'Plane'
@@ -253,8 +252,8 @@ def analyze_sim (info,sim):
     slice1.HyperTreeGridSlicer.Origin = [5.5, 3.5, 3.6059999256394804]
 
     # Properties modified on slice1.SliceType
-    slice1.SliceType.Origin = [0, 0.01, 0]
-    slice1.SliceType.Normal = [0.0, 1.0, 0.0]  # poner el plano en direccion y
+    slice1.SliceType.Origin = [0.0, 0.01, 0.0]
+    slice1.SliceType.Normal = [0.0, 1.0, 0.0]
 
     # show data in view
     slice1Display = Show(slice1, renderView1, 'GeometryRepresentation')
@@ -282,11 +281,13 @@ def analyze_sim (info,sim):
     slice1Display.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
 
     # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
-    slice1Display.ScaleTransferFunction.Points = [-294.15997314453125, 0.0, 0.5, 0.0, 140.1374053955078, 1.0, 0.5, 0.0]
+    slice1Display.ScaleTransferFunction.Points = [-384.7149963378906, 0.0, 0.5, 0.0, 136.21124267578125, 1.0, 0.5, 0.0]
 
     # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
-    slice1Display.OpacityTransferFunction.Points = [-294.15997314453125, 0.0, 0.5, 0.0, 140.1374053955078, 1.0, 0.5,
-                                                    0.0]
+    slice1Display.OpacityTransferFunction.Points = [-384.7149963378906, 0.0, 0.5, 0.0, 136.21124267578125, 1.0, 0.5, 0.0]
+
+    # hide data in view
+    Hide(extractBlock1, renderView1)
 
     # show color bar/color legend
     slice1Display.SetScalarBarVisibility(renderView1, True)
@@ -294,11 +295,27 @@ def analyze_sim (info,sim):
     # update the view to ensure updated data information
     renderView1.Update()
 
-    # Rescale transfer function
-    pLUT.RescaleTransferFunction(-20.0, 20.0)
+    # update the view to ensure updated data information
+    renderView1.Update()
+
+    # toggle 3D widget visibility (only when running from the GUI)
+    Hide3DWidgets(proxy=slice1.SliceType)
 
     # Rescale transfer function
-    pPWF.RescaleTransferFunction(-20.0, 20.0)
+    pLUT.RescaleTransferFunction(-40.0, 40.0)
+    # Rescale transfer function
+    pPWF.RescaleTransferFunction(-40.0, 40.0)
+
+        #### saving camera placements for all active views
+
+    for slice_view in slice_views:
+        renderView1.CameraPosition = slice_camera[slice_view]["Position"]
+        renderView1.CameraFocalPoint = slice_camera[slice_view]["FocalPoint"]
+        renderView1.CameraViewUp = slice_camera[slice_view]["ViewUp"]
+        renderView1.CameraParallelScale = slice_camera[slice_view]["ParallelScale"]
+        # save screenshot
+        SaveScreenshot(str(sim.outFolder) + '\\' + str(sim.name) + '_' + slice_view + '_Preassure.png', renderView1,
+                       ImageResolution=info["ImageRes"])
 
     # set scalar coloring
     ColorBy(slice1Display, ('POINTS', 'U', 'Magnitude'))
@@ -315,17 +332,16 @@ def analyze_sim (info,sim):
     # get color transfer function/color map for 'U'
     uLUT = GetColorTransferFunction('U')
     uLUT.RescaleOnVisibilityChange = 1
-    uLUT.RGBPoints = [0.0, 0.02, 0.3813, 0.9981, 2.790735296602469, 0.02000006, 0.424267768, 0.96906969,
-                      5.581470593204938, 0.02, 0.467233763, 0.940033043, 8.372205889807407, 0.02, 0.5102, 0.911,
-                      11.162941186409876, 0.02000006, 0.546401494, 0.872669438, 13.953676483012345, 0.02, 0.582600362,
-                      0.83433295, 16.744411779614815, 0.02, 0.6188, 0.796, 19.53514707621728, 0.02000006, 0.652535156,
-                      0.749802434, 22.325882372819752, 0.02, 0.686267004, 0.703599538, 25.116617669422222, 0.02, 0.72,
-                      0.6574, 27.90735296602469, 0.02000006, 0.757035456, 0.603735359, 30.698088262627163, 0.02,
-                      0.794067037, 0.55006613, 33.48882355922963, 0.02, 0.8311, 0.4964, 36.2795588558321,
-                      0.021354336738172372, 0.8645368555261631, 0.4285579460761159, 39.07029415243457,
-                      0.023312914349117714, 0.897999359924484, 0.36073871343115577, 41.86102944903704,
-                      0.015976108242848862, 0.9310479513349017, 0.2925631815088092, 44.651764745639504,
-                      0.27421074700988196, 0.952562960995083, 0.15356836602739213, 47.44250004224199,
+    uLUT.RGBPoints = [0.0, 0.02, 0.3813, 0.9981, 2.790735296602469, 0.02000006, 0.424267768, 0.96906969, 5.581470593204938,
+                      0.02, 0.467233763, 0.940033043, 8.372205889807407, 0.02, 0.5102, 0.911, 11.162941186409876,
+                      0.02000006, 0.546401494, 0.872669438, 13.953676483012345, 0.02, 0.582600362, 0.83433295,
+                      16.744411779614815, 0.02, 0.6188, 0.796, 19.53514707621728, 0.02000006, 0.652535156, 0.749802434,
+                      22.325882372819752, 0.02, 0.686267004, 0.703599538, 25.116617669422222, 0.02, 0.72, 0.6574,
+                      27.90735296602469, 0.02000006, 0.757035456, 0.603735359, 30.698088262627163, 0.02, 0.794067037,
+                      0.55006613, 33.48882355922963, 0.02, 0.8311, 0.4964, 36.2795588558321, 0.021354336738172372,
+                      0.8645368555261631, 0.4285579460761159, 39.07029415243457, 0.023312914349117714, 0.897999359924484,
+                      0.36073871343115577, 41.86102944903704, 0.015976108242848862, 0.9310479513349017, 0.2925631815088092,
+                      44.651764745639504, 0.27421074700988196, 0.952562960995083, 0.15356836602739213, 47.44250004224199,
                       0.4933546281681699, 0.9619038625309482, 0.11119493614749336, 50.233235338844445, 0.6439, 0.9773,
                       0.0469, 53.023970635446915, 0.762401813, 0.984669591, 0.034600153, 55.81470593204938, 0.880901185,
                       0.992033407, 0.022299877, 58.605441228651856, 0.9995285432627147, 0.9995193706781492,
@@ -336,12 +352,12 @@ def analyze_sim (info,sim):
                       80.93132360147159, 0.999266668, 0.625366186, 0.2172, 83.72205889807408, 0.9994, 0.5773, 0.2172,
                       86.51279419467656, 0.999402998, 0.521068455, 0.217200652, 89.30352949127901, 0.9994, 0.464832771,
                       0.2172, 92.09426478788149, 0.9994, 0.4086, 0.2172, 94.88500008448398, 0.9947599917687346,
-                      0.33177297300202935, 0.2112309638520206, 97.67573538108643, 0.9867129505479589,
-                      0.2595183410914934, 0.19012239549291934, 100.46647067768889, 0.9912458875646419,
-                      0.14799417507952672, 0.21078892136920357, 103.25720597429137, 0.949903037, 0.116867171,
-                      0.252900603, 106.04794127089383, 0.903199533, 0.078432949, 0.291800389, 108.83867656749632,
-                      0.8565, 0.04, 0.3307, 111.62941186409876, 0.798902627, 0.04333345, 0.358434298,
-                      114.42014716070123, 0.741299424, 0.0466667, 0.386166944, 117.21088245730371, 0.6837, 0.05, 0.4139]
+                      0.33177297300202935, 0.2112309638520206, 97.67573538108643, 0.9867129505479589, 0.2595183410914934,
+                      0.19012239549291934, 100.46647067768889, 0.9912458875646419, 0.14799417507952672, 0.21078892136920357,
+                      103.25720597429137, 0.949903037, 0.116867171, 0.252900603, 106.04794127089383, 0.903199533,
+                      0.078432949, 0.291800389, 108.83867656749632, 0.8565, 0.04, 0.3307, 111.62941186409876, 0.798902627,
+                      0.04333345, 0.358434298, 114.42014716070123, 0.741299424, 0.0466667, 0.386166944, 117.21088245730371,
+                      0.6837, 0.05, 0.4139]
     uLUT.ColorSpace = 'RGB'
     uLUT.NanColor = [1.0, 0.0, 0.0]
     uLUT.NumberOfTableValues = 32
@@ -353,72 +369,10 @@ def analyze_sim (info,sim):
     uPWF.ScalarRangeInitialized = 1
 
     # Rescale transfer function
-    uLUT.RescaleTransferFunction(-30.0, 30.0)
+    uLUT.RescaleTransferFunction(0.0, 40.0)
 
-    #### saving camera placements for all active views
-
-    for slice_view in slice_views:
-        renderView1.CameraPosition = slice_camera[slice_view]["Position"]
-        renderView1.CameraFocalPoint = slice_camera[slice_view]["FocalPoint"]
-        renderView1.CameraViewUp = slice_camera[slice_view]["ViewUp"]
-        renderView1.CameraParallelScale = slice_camera[slice_view]["ParallelScale"]
-        # save screenshot
-        SaveScreenshot(str(sim.outFolder) + '\\' + str(sim.name) + '_' + slice_view + '_velocity.png', renderView1,
-                       ImageResolution=info["ImageRes"])
-
-    # get color transfer function/color map for 'P'
-    uLUT = GetColorTransferFunction('P')
-    uLUT.RescaleOnVisibilityChange = 1
-    uLUT.RGBPoints = [0.0, 0.02, 0.3813, 0.9981, 2.7907352966024686, 0.02000006, 0.424267768, 0.96906969,
-                      5.581470593204937, 0.02, 0.467233763, 0.940033043, 8.372205889807407, 0.02, 0.5102, 0.911,
-                      11.162941186409874, 0.02000006, 0.546401494, 0.872669438, 13.953676483012345, 0.02, 0.582600362,
-                      0.83433295, 16.744411779614815, 0.02, 0.6188, 0.796, 19.53514707621728, 0.02000006, 0.652535156,
-                      0.749802434, 22.32588237281975, 0.02, 0.686267004, 0.703599538, 25.116617669422222, 0.02, 0.72,
-                      0.6574, 27.90735296602469, 0.02000006, 0.757035456, 0.603735359, 30.698088262627163, 0.02,
-                      0.794067037, 0.55006613, 33.48882355922963, 0.02, 0.8311, 0.4964, 36.2795588558321,
-                      0.021354336738172372, 0.8645368555261631, 0.4285579460761159, 39.07029415243457,
-                      0.023312914349117714, 0.897999359924484, 0.36073871343115577, 41.86102944903704,
-                      0.015976108242848862, 0.9310479513349017, 0.2925631815088092, 44.6517647456395,
-                      0.27421074700988196, 0.952562960995083, 0.15356836602739213, 47.44250004224199,
-                      0.4933546281681699, 0.9619038625309482, 0.11119493614749336, 50.233235338844445, 0.6439, 0.9773,
-                      0.0469, 53.023970635446915, 0.762401813, 0.984669591, 0.034600153, 55.81470593204938, 0.880901185,
-                      0.992033407, 0.022299877, 58.605441228651856, 0.9995285432627147, 0.9995193706781492,
-                      0.0134884641450013, 61.396176525254326, 0.999402998, 0.955036376, 0.079066628, 64.1869118218568,
-                      0.9994, 0.910666223, 0.148134024, 66.97764711845926, 0.9994, 0.8663, 0.2172, 69.76838241506174,
-                      0.999269665, 0.818035981, 0.217200652, 72.5591177116642, 0.999133332, 0.769766184, 0.2172,
-                      75.34985300826668, 0.999, 0.7215, 0.2172, 78.14058830486914, 0.99913633, 0.673435546, 0.217200652,
-                      80.93132360147159, 0.999266668, 0.625366186, 0.2172, 83.72205889807408, 0.9994, 0.5773, 0.2172,
-                      86.51279419467657, 0.999402998, 0.521068455, 0.217200652, 89.303529491279, 0.9994, 0.464832771,
-                      0.2172, 92.09426478788149, 0.9994, 0.4086, 0.2172, 94.88500008448398, 0.9947599917687346,
-                      0.33177297300202935, 0.2112309638520206, 97.67573538108643, 0.9867129505479589,
-                      0.2595183410914934, 0.19012239549291934, 100.46647067768889, 0.9912458875646419,
-                      0.14799417507952672, 0.21078892136920357, 103.25720597429137, 0.949903037, 0.116867171,
-                      0.252900603, 106.04794127089383, 0.903199533, 0.078432949, 0.291800389, 108.83867656749632,
-                      0.8565, 0.04, 0.3307, 111.62941186409876, 0.798902627, 0.04333345, 0.358434298,
-                      114.42014716070123, 0.741299424, 0.0466667, 0.386166944, 117.21088245730371, 0.6837, 0.05, 0.4139]
-    uLUT.ColorSpace = 'RGB'
-    uLUT.NanColor = [1.0, 0.0, 0.0]
-    uLUT.NumberOfTableValues = 32
-    uLUT.ScalarRangeInitialized = 1.0
-
-    # get opacity transfer function/opacity map for 'P'
-    uPWF = GetOpacityTransferFunction('P')
-    uPWF.Points = [0.0, 0.0, 0.5, 0.0, 117.21088245730371, 1.0, 0.5, 0.0]
-    uPWF.ScalarRangeInitialized = 1
     # Rescale transfer function
-    pPWF.RescaleTransferFunction(-50.0, 120.0)
-
-    # set scalar coloring
-    ColorBy(slice1Display, ('POINTS', 'P', 'Magnitude'))
-
-    # Hide the scalar bar for this color map if no visible data is colored by it.
-    HideScalarBarIfNotNeeded(pLUT, renderView1)
-
-    # rescale color and/or opacity maps used to include current data range
-    slice1Display.RescaleTransferFunctionToDataRange(True, False)
-
-    # show color bar/color legend
-    slice1Display.SetScalarBarVisibility(renderView1, True)
+    uPWF.RescaleTransferFunction(0.0, 40.0)
 
     for slice_view in slice_views:
         renderView1.CameraPosition = slice_camera[slice_view]["Position"]
@@ -426,5 +380,5 @@ def analyze_sim (info,sim):
         renderView1.CameraViewUp = slice_camera[slice_view]["ViewUp"]
         renderView1.CameraParallelScale = slice_camera[slice_view]["ParallelScale"]
         # save screenshot
-        SaveScreenshot(str(sim.outFolder) + '\\' + str(sim.name) + '_' + slice_view + '_Preassure.png', renderView1,
+        SaveScreenshot(str(sim.outFolder) + '\\' + str(sim.name) + '_' + slice_view + '_Velocity.png', renderView1,
                        ImageResolution=info["ImageRes"])
