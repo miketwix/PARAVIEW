@@ -71,6 +71,11 @@ def simname_creator(output_path,sim_name):
   path = Path(output_path+'\\'+sim_name)
   path.mkdir(parents=True)
 
+  subfolders = ['CAR_STL', 'PART_STL', 'Cp', 'y+', 'WSS', 'Cpx']
+  for subfolder in subfolders:
+      subfolder_path = path / subfolder
+      subfolder_path.mkdir(parents=True)
+
   return str(path)
 
 def csv_reader(ruta,l):
