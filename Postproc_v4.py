@@ -51,7 +51,7 @@ cont = input('Output folder  will be emptied, do you wish to proceed? [y/n]: ')
 
 while valid_ans == 0:
     if cont == 'y':
-        envConfig.remove_files(setup_info["FolderInfo"]["outFolder"]))
+        envConfig.remove_files(setup_info["FolderInfo"]["outFolder"])
         valid_ans = 1
     elif cont == 'n':
         quit()

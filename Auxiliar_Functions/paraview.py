@@ -86,7 +86,7 @@ def analyze_sim (info,sim):
         renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
     # save screenshot
-        SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'.png', renderView1, ImageResolution=info["ImageRes"])
+        SaveScreenshot(str(sim.outFolder) + '\\' + 'CAR_STL' + '\\'+str(sim.name)+'_'+stl_view+'.png', renderView1, ImageResolution=info["ImageRes"])
     Delete(CarSTLDisplay)
 
     ##########                          ##########
@@ -158,7 +158,7 @@ def analyze_sim (info,sim):
         renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
         # save screenshot
-        SaveScreenshot(str(sim.outFolder) + '\\' + str(sim.name) + '_' + stl_view + 'PART.png', renderView1,
+        SaveScreenshot(str(sim.outFolder) + '\\'+ 'PART_STL' + '\\' + str(sim.name) + '_' + stl_view + 'PART.png', renderView1,
                        ImageResolution=info["ImageRes"])
     Delete(PartSTLDisplay)
 
@@ -513,7 +513,7 @@ def analyze_sim (info,sim):
                 renderView1.CameraViewUp = slice_camera[slice_view]["ViewUp"]
                 renderView1.CameraParallelScale = slice_camera[slice_view]["ParallelScale"]
                 # save screenshot
-                SaveScreenshot(str(sim.outFolder) + '\\' + str(sim.name) + '_' + slice_view + '_PreTot_' + axe_name + '_' + str(slice_distance_axe) + '.png', renderView1,
+                SaveScreenshot(str(sim.outFolder) + '\\' + 'Pt' + '\\' + str(sim.name) + '_' + slice_view + '_PreTot_' + axe_name + '_' + str(slice_distance_axe) + '.png', renderView1,
                                ImageResolution=info["ImageRes"])
 
             # set scalar coloring
@@ -587,7 +587,7 @@ def analyze_sim (info,sim):
                 renderView1.CameraViewUp = slice_camera[slice_view]["ViewUp"]
                 renderView1.CameraParallelScale = slice_camera[slice_view]["ParallelScale"]
                 # save screenshot
-                SaveScreenshot(str(sim.outFolder) + '\\' + str(sim.name) + '_' + slice_view + '_Vel_' + axe_name + '_' + str(slice_distance_axe) + '.png', renderView1,
+                SaveScreenshot(str(sim.outFolder) + '\\' + 'U' + '\\' + str(sim.name) + '_' + slice_view + '_Vel_' + axe_name + '_' + str(slice_distance_axe) + '.png', renderView1,
                                ImageResolution=info["ImageRes"])
 
     ##########                        ##########
@@ -618,7 +618,7 @@ def analyze_sim (info,sim):
                 renderView1.CameraViewUp = slice_camera[slice_view]["ViewUp"]
                 renderView1.CameraParallelScale = slice_camera[slice_view]["ParallelScale"]
                 # save screenshot
-                SaveScreenshot(str(sim.outFolder) + '\\' + str(sim.name) + '_' + slice_view + '_Pre_' + axe_name + '_' + str(slice_distance_axe) + '.png', renderView1,
+                SaveScreenshot(str(sim.outFolder) + '\\' + 'P' + '\\' + str(sim.name) + '_' + slice_view + '_Pre_' + axe_name + '_' + str(slice_distance_axe) + '.png', renderView1,
                                ImageResolution=info["ImageRes"])
 
     # create a new 'Extract Block'
@@ -685,7 +685,7 @@ def analyze_sim (info,sim):
         renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
     # save screenshot
-        SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'Pre_CAR.png', renderView1, ImageResolution=info["ImageRes"])
+        SaveScreenshot(str(sim.outFolder)+'\\' + 'P' + '\\'+str(sim.name)+'_'+stl_view+'Pre_CAR.png', renderView1, ImageResolution=info["ImageRes"])
     Delete(CarSTLDisplay)
 
     ##########                                ##########
@@ -767,7 +767,7 @@ def analyze_sim (info,sim):
         renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
     # save screenshot
-        SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'WSStress_CAR.png', renderView1, ImageResolution=info["ImageRes"])
+        SaveScreenshot(str(sim.outFolder)+'\\' + 'WSS' + '\\'+str(sim.name)+'_'+stl_view+'WSStress_CAR.png', renderView1, ImageResolution=info["ImageRes"])
     Delete(CarSTLDisplay)
 
     ##########                            ##########
@@ -940,7 +940,7 @@ def analyze_sim (info,sim):
         renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
     # save screenshot
-        SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'Drag_CAR.png', renderView1, ImageResolution=info["ImageRes"])
+        SaveScreenshot(str(sim.outFolder)+'\\' + 'Drag' + '\\'+ str(sim.name)+'_'+stl_view+'Drag_CAR.png', renderView1, ImageResolution=info["ImageRes"])
     Delete(CarSTLDisplay)
 
     # hide data in view
@@ -1065,7 +1065,7 @@ def analyze_sim (info,sim):
         renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
     # save screenshot
-        SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'Lift_CAR.png', renderView1, ImageResolution=info["ImageRes"])
+        SaveScreenshot(str(sim.outFolder)+'\\' + 'Lift' + '\\' +str(sim.name)+'_'+stl_view+'Lift_CAR.png', renderView1, ImageResolution=info["ImageRes"])
     Delete(CarSTLDisplay)
 
     # hide data in view
@@ -1190,7 +1190,7 @@ def analyze_sim (info,sim):
         renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
     # save screenshot
-        SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'Cp_CAR.png', renderView1, ImageResolution=info["ImageRes"])
+        SaveScreenshot(str(sim.outFolder)+'\\' + 'Cp' + '\\'+str(sim.name)+'_'+stl_view+'Cp_CAR.png', renderView1, ImageResolution=info["ImageRes"])
     Delete(CarSTLDisplay)
 
     # hide data in view
@@ -1347,7 +1347,7 @@ def analyze_sim (info,sim):
         renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
     # save screenshot
-        SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'CpX_CAR.png', renderView1, ImageResolution=info["ImageRes"])
+        SaveScreenshot(str(sim.outFolder)+'\\' + 'Cpx' + '\\'+str(sim.name)+'_'+stl_view+'CpX_CAR.png', renderView1, ImageResolution=info["ImageRes"])
     Delete(CarSTLDisplay)
 
     # hide data in view
@@ -1459,7 +1459,7 @@ def analyze_sim (info,sim):
         renderView1.CameraViewUp = stl_camera[stl_view]["ViewUp"]
         renderView1.CameraParallelScale = stl_camera[stl_view]["ParallelScale"]
     # save screenshot
-        SaveScreenshot(str(sim.outFolder)+'\\'+str(sim.name)+'_'+stl_view+'CpZ_CAR.png', renderView1, ImageResolution=info["ImageRes"])
+        SaveScreenshot(str(sim.outFolder)+ '\\' + 'Cpz' + '\\'+str(sim.name)+'_'+stl_view+'CpZ_CAR.png', renderView1, ImageResolution=info["ImageRes"])
     Delete(CarSTLDisplay)
 
 
