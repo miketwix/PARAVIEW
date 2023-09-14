@@ -4,7 +4,7 @@
 #   Version 4                                                                                                          #
 #   03/03/22                                                                                                           #
 # -------------------------------------------------------------------------------------------------------------------- #
-#   Author: Sergio Batuecas / Miguel Pérez /Rafael Enríquez / Daniel Orozco
+#   Author: Sergio Batuecas / Miguel Pérez / Daniel Orozco
 
 #   Description: this script will be used from AWS/Windows/Ubuntu to generate all the cfd post-processing data,
 #               figures, graphs, etc. needed. Modified from traces obtained from the Paraview app.
@@ -57,7 +57,6 @@ while valid_ans == 0:
         quit()
     else:
         cont = input('Please enter a valid option [y/n]: ')
-
 
 envConfig.clearConsole()
 

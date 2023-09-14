@@ -71,7 +71,7 @@ def simname_creator(output_path,sim_name):
   path = Path(output_path+'\\'+sim_name)
   path.mkdir(parents=True)
 
-  subfolders = ['CAR_STL', 'PART_STL', 'Cp', 'y+', 'WSS', 'Cpx', 'Cpz', 'P', 'U', 'Pt', 'Lift', 'Drag']
+  subfolders = ['CAR_STL', 'PART_STL', 'Cp', 'y+', 'WSS', 'Cpx', 'Cpz', 'P', 'U', 'Pt', 'Pre_CAR', 'CLA', 'CDA', 'Mesh', 'GIF_Preassure_Contour', 'GIF_Velocity_Contour']
   for subfolder in subfolders:
       subfolder_path = path / subfolder
       subfolder_path.mkdir(parents=True)

@@ -74,12 +74,14 @@ def car_views():
         "ViewUp": [0.0, 1.0, 0.0],
         "ParallelScale": 1.76
     }
+
     slice_side_view_dictionary = {
         "Position": [1.2, -6.18, 1.26],
         "FocalPoint": [1.2, 3.5, 1.26],
         "ViewUp": [0.0, 0.0, 1.0],
         "ParallelScale": 1.76
     }
+
     slice_front_view_dictionary = {
         "Position": [-2.88, 0.13, 0.58],
         "FocalPoint": [0.0, 0.13, 0.58],
@@ -139,5 +141,6 @@ def car_views():
         "Back": car_back_view_dictionary,
         "Isometric": car_isometric_view_dictionary
     }
+
     return stl_views_dictionary, slice_views_dictionary, car_views_dictionary
 
