@@ -116,16 +116,19 @@ def analyze_sim (info,sim):
     # init the 'PiecewiseFunction' selected for 'OSPRayScaleFunction'
     CarSTLDisplay.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
     # create a new 'Logo'
-    logo1 = Logo()
+    logo1 = Logo(registrationName='Logo1')
+
+    # a texture
+    mADFT_P_Navy = CreateTexture('C:\\Users\\fitir\\Desktop\\Paraview_Batch_Postproc\\Templates\\MADFT_P_Navy.png')
+
+    # change texture
+    logo1.Texture = mADFT_P_Navy
 
     # show data in view
     logo1Display = Show(logo1, renderView1, 'LogoSourceRepresentation')
 
-    # a texture
-    mADFT_P_Navy = CreateTexture("C:\\Users\\fitir\\Downloads\\MADFT_P_Navy.png")
-
-    # change texture
-    logo1.Texture = mADFT_P_Navy
+    # update the view to ensure updated data information
+    renderView1.Update()
 
     # Properties modified on logo1Display
     logo1Display.Position = [0.9, 0.9]
@@ -189,16 +192,19 @@ def analyze_sim (info,sim):
         PartSTLDisplay.OSPRayScaleFunction.Points = [0.08105005493164062, 0.0, 0.5, 0.0, 810.5005493164062,
                                                      1.0, 0.5, 0.0]
         # create a new 'Logo'
-        logo1 = Logo()
+        logo1 = Logo(registrationName='Logo1')
+
+        # a texture
+        mADFT_P_Navy = CreateTexture('C:\\Users\\fitir\\Desktop\\Paraview_Batch_Postproc\\Templates\\MADFT_P_Navy.png')
+
+        # change texture
+        logo1.Texture = mADFT_P_Navy
 
         # show data in view
         logo1Display = Show(logo1, renderView1, 'LogoSourceRepresentation')
 
-        # a texture
-        mADFT_P_Navy = CreateTexture("C:\\Users\\fitir\\Downloads\\MADFT_P_Navy.png")
-
-        # change texturex
-        logo1.Texture = mADFT_P_Navy
+        # update the view to ensure updated data information
+        renderView1.Update()
 
         # Properties modified on logo1Display
         logo1Display.Position = [0.9, 0.9]
@@ -241,11 +247,12 @@ def analyze_sim (info,sim):
     ########## FOAM ANALISYS OF THE SLICES OF PREASSURE, TOTAL PREASSURE AND VELOCITY ##########
     ##########                                                                        ##########
 
+
     print('Curently analyzing: ' + sim.name + ' .foam')
 
     # casefoam = SliceReader(registrationName=sim.name + 'car', FileNames=[sim.foam])
     # create a new 'OpenFOAMReader'
-    casefoam = OpenFOAMReader(FileName='C:\\Users\\fitir\\Desktop\\Paraview_Batch_Postproc\\Case_Files\\EJEMPLOCOCHECOMPLETO\\case.foam')  # nombre casefoam
+    casefoam = OpenFOAMReader(FileName='C:\\Users\\fitir\\Desktop\\Paraview_Batch_Postproc\\Case_Files\\' + sim.name +'\\case.foam')  # nombre casefoam
     casefoam.MeshRegions = ['intern alMesh']
     casefoam.CellArrays = ['U', 'k', 'nut', 'omega', 'p', 'wallShearStress', 'yPlus']
     list_of_patches = set_mesh_regions(casefoam)
@@ -257,6 +264,7 @@ def analyze_sim (info,sim):
 
     # show data in view
     casefoamDisplay = Show(casefoam, renderView1, 'GeometryRepresentation')
+    print('Curently analyzing: ' + sim.name + ' .foam')
 
     # get color transfer function/color map for 'p'
     pLUT = GetColorTransferFunction('p')
@@ -329,14 +337,14 @@ def analyze_sim (info,sim):
     pPWF = GetOpacityTransferFunction('p')
     pPWF.Points = [-42126.4296875, 0.0, 0.5, 0.0, 810.5005493164062, 1.0, 0.5, 0.0]
     pPWF.ScalarRangeInitialized = 1
+    print('Curently analyzing: ' + sim.name + ' .foam')
 
-    print('Creating the lists of idices')
-################### CREAR LISTA DE INDICES #############################
+    ################### CREAR LISTA DE INDICES #############################
 
     # ATT. Get dictionary containing the indices for each block in the dataset
     index_dict, ind = get_block_indices(casefoam.GetDataInformation().DataInformation.GetCompositeDataInformation())
-    #print("This is the ind variable: " + str(ind))
-    #print("This is the index_dict variable: " + str(index_dict))
+    # print("This is the ind variable: " + str(ind))
+    # print("This is the index_dict variable: " + str(index_dict))
 
     # ATT. Build a list of lists of indices for the whole dataset and the different blocks defined.
     lists_of_indices = []
@@ -351,6 +359,7 @@ def analyze_sim (info,sim):
             list_of_indices.append(index)
 
         lists_of_indices.append(list_of_indices)
+
 
     ################### CREAR EXTRACT BLOCK1 #############################
 
@@ -406,7 +415,7 @@ def analyze_sim (info,sim):
 
     # Properties modified on calculator1
     calculator1.ResultArrayName = 'Pt'
-    calculator1.Function = 'p+1/2*1.1963*' + str(simvelocity) + '^2'
+    calculator1.Function = 'p+1/2*1.15036*' + str(simvelocity) + '^2'
 
     # show data in view
     calculator1Display = Show(calculator1, renderView1, 'UnstructuredGridRepresentation')
@@ -688,10 +697,10 @@ def analyze_sim (info,sim):
             uPWF.ScalarRangeInitialized = 1
 
             # Rescale transfer function
-            uLUT.RescaleTransferFunction(0, 45.0)
+            uLUT.RescaleTransferFunction(0, 12.0)
 
             # Rescale transfer function
-            uPWF.RescaleTransferFunction(0, 45.0)
+            uPWF.RescaleTransferFunction(0, 12.0)
 
             # rescale color and/or opacity maps used to exactly fit the current data range
             #slice1Display.RescaleTransferFunctionToDataRange(False, True)
@@ -996,18 +1005,22 @@ def analyze_sim (info,sim):
     ##########                                ##########
 
         # Hide the scalar bar for this color map if no visible data is colored by it.
-        HideScalarBarIfNotNeeded(wallShearStressLUT, renderView1)
+        #HideScalarBarIfNotNeeded(wallShearStressLUT, renderView1)
 
         # Hide the scalar bar for this color map if no visible data is colored by it.
         HideScalarBarIfNotNeeded(pLUT, renderView1)
 
     if TypeAnalysis == 'c' or 'm':
 
-        # Hide the scalar bar for this color map if no visible data is colored by it.
-        HideScalarBarIfNotNeeded(wallShearStressLUT, renderView1)
 
         # set scalar coloring
         ColorBy(extractBlock2Display, ('POINTS', 'yPlus'))
+
+        # Hide the scalar bar for this color map if no visible data is colored by it.
+        #HideScalarBarIfNotNeeded(wallShearStressLUT, renderView1)
+
+        # Hide the scalar bar for this color map if no visible data is colored by it.
+        HideScalarBarIfNotNeeded(pLUT, renderView1)
 
         # get color transfer function/color map for 'yPlus'
         yPlusLUT = GetColorTransferFunction('yPlus')
@@ -1244,18 +1257,21 @@ def analyze_sim (info,sim):
     calculator2_1 = Calculator(Input=generateSurfaceNormals1)
     calculator2_1.Function = ''
 
-    # rename source object
-    RenameSource('CLA', calculator2_1)
+
     # Properties modified on calculator2_1
     calculator2_1.Function = 'Normals_Z*p'
 
     # show data in view
     calculator2_1Display = Show(calculator2_1, renderView1, 'GeometryRepresentation')
 
+    # rename source object
+    RenameSource('CLA', calculator2_1)
+    ###CAMBIAR CLA A RESULT
+
     # get color transfer function/color map for 'Result'
-    resultLUT = GetColorTransferFunction('Result')
-    resultLUT.RescaleOnVisibilityChange = 1
-    resultLUT.RGBPoints = [-10110.821560606593, 0.02, 0.3813, 0.9981, -9570.885157290675, 0.02000006, 0.424267768,
+    CLALUT = GetColorTransferFunction('CLA')
+    CLALUT.RescaleOnVisibilityChange = 1
+    CLALUT.RGBPoints = [-10110.821560606593, 0.02, 0.3813, 0.9981, -9570.885157290675, 0.02000006, 0.424267768,
                            0.96906969, -9030.948753974755, 0.02, 0.467233763, 0.940033043, -8491.012350658837, 0.02,
                            0.5102, 0.911, -7951.075947342917, 0.02000006, 0.546401494, 0.872669438, -7411.139544026999,
                            0.02, 0.582600362, 0.83433295, -6871.203140711079, 0.02, 0.6188, 0.796, -6331.266737395161,
@@ -1284,26 +1300,26 @@ def analyze_sim (info,sim):
                            10946.69816871425, 0.8565, 0.04, 0.3307, 11486.634572030165, 0.798902627, 0.04333345,
                            0.358434298, 12026.570975346087, 0.741299424, 0.0466667, 0.386166944, 12566.507378662005,
                            0.6837, 0.05, 0.4139]
-    resultLUT.ColorSpace = 'RGB'
-    resultLUT.NanColor = [1.0, 0.0, 0.0]
-    resultLUT.NumberOfTableValues = 32
-    resultLUT.ScalarRangeInitialized = 1.0
+    CLALUT.ColorSpace = 'RGB'
+    CLALUT.NanColor = [1.0, 0.0, 0.0]
+    CLALUT.NumberOfTableValues = 32
+    CLALUT.ScalarRangeInitialized = 1.0
 
     # trace defaults for the display properties.
     calculator2_1Display.Representation = 'Surface'
-    calculator2_1Display.ColorArrayName = ['POINTS', 'Result']
-    calculator2_1Display.LookupTable = resultLUT
-    calculator2_1Display.OSPRayScaleArray = 'Result'
+    calculator2_1Display.ColorArrayName = ['POINTS', 'CLA']
+    calculator2_1Display.LookupTable = CLALUT
+    calculator2_1Display.OSPRayScaleArray = 'CLA'
     calculator2_1Display.OSPRayScaleFunction = 'PiecewiseFunction'
     calculator2_1Display.SelectOrientationVectors = 'U'
     calculator2_1Display.ScaleFactor = 0.2915555477142334
-    calculator2_1Display.SelectScaleArray = 'Result'
+    calculator2_1Display.SelectScaleArray = 'CLA'
     calculator2_1Display.GlyphType = 'Arrow'
-    calculator2_1Display.GlyphTableIndexArray = 'Result'
+    calculator2_1Display.GlyphTableIndexArray = 'CLA'
     calculator2_1Display.GaussianRadius = 0.014577777385711671
-    calculator2_1Display.SetScaleArray = ['POINTS', 'Result']
+    calculator2_1Display.SetScaleArray = ['POINTS', 'CLA']
     calculator2_1Display.ScaleTransferFunction = 'PiecewiseFunction'
-    calculator2_1Display.OpacityArray = ['POINTS', 'Result']
+    calculator2_1Display.OpacityArray = ['POINTS', 'CLA']
     calculator2_1Display.OpacityTransferFunction = 'PiecewiseFunction'
     calculator2_1Display.DataAxesGrid = 'GridAxesRepresentation'
     calculator2_1Display.PolarAxes = 'PolarAxesRepresentation'
@@ -1332,16 +1348,16 @@ def analyze_sim (info,sim):
     # Rescale transfer function
     CDAPWF.RescaleTransferFunction(-381.24950400195667, 14112.55331074365)
 
-    # get opacity transfer function/opacity map for 'Result'
-    resultPWF = GetOpacityTransferFunction('Result')
-    resultPWF.Points = [-10110.821560606593, 0.0, 0.5, 0.0, 12566.507378662005, 1.0, 0.5, 0.0]
-    resultPWF.ScalarRangeInitialized = 1
+    # get opacity transfer function/opacity map for 'CLA'
+    CLAPWF = GetOpacityTransferFunction('CLA')
+    CLAPWF.Points = [-10110.821560606593, 0.0, 0.5, 0.0, 12566.507378662005, 1.0, 0.5, 0.0]
+    CLAPWF.ScalarRangeInitialized = 1
 
     # Rescale transfer function
-    resultLUT.RescaleTransferFunction(0.0, 80.0)
+    CLALUT.RescaleTransferFunction(0.0, 80.0)
 
     # Rescale transfer function
-    resultPWF.RescaleTransferFunction(0.0, 80.0)
+    CLAPWF.RescaleTransferFunction(0.0, 80.0)
 
     # hide data in view
     Hide(extractBlock2, renderView1)
@@ -1372,7 +1388,7 @@ def analyze_sim (info,sim):
 
         # Properties modified on calculator2_2
         calculator2_2.ResultArrayName = 'Cp'
-        calculator2_2.Function = 'p/(0.5*1.1963*(' + str(simvelocity) + '^2))'
+        calculator2_2.Function = 'p/(0.5*1.15036*(' + str(simvelocity) + '^2))'
 
         # show data in view
         calculator2_2Display = Show(calculator2_2, renderView1, 'GeometryRepresentation')
@@ -1531,7 +1547,7 @@ def analyze_sim (info,sim):
 
         # Properties modified on calculator2_3
         calculator2_3.ResultArrayName = 'CpX'
-        calculator2_3.Function = '(p/(0.5*1.1963*(' + str(simvelocity) + '^2)))*Normals_X'
+        calculator2_3.Function = '(p/(0.5*1.15036*(' + str(simvelocity) + '^2)))*Normals_X'
 
         # show data in view
         calculator2_3Display = Show(calculator2_3, renderView1, 'GeometryRepresentation')
@@ -1643,7 +1659,7 @@ def analyze_sim (info,sim):
 
         # Properties modified on calculator2_4
         calculator2_4.ResultArrayName = 'CpZ'
-        calculator2_4.Function = '(p/(0.5*1.1963*(' + str(simvelocity) + '^2)))*Normals_Z'
+        calculator2_4.Function = '(p/(0.5*1.15036*(' + str(simvelocity) + '^2)))*Normals_Z'
 
         # show data in view
         calculator2_4Display = Show(calculator2_4, renderView1, 'GeometryRepresentation')
